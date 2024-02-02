@@ -1,0 +1,185 @@
+\newcommand{\re}{recursively enumerable }
+\begin{enumerate}
+\item \textbf{To show} : \re are closed under union
+    
+    Let $L_1$ and $L_2$ be the 2 \re languages and let the turing machines (not necessarily total) accepting them be $M_1$ and $M_2$ respectively.
+
+    Now we need to give a turing machine $M$, which accepts $ L = L_1 \cup L_2 $.
+
+    The description of $M$ is as follows:
+
+    ``
+        On input x,
+        \begin{enumerate}
+            \item \label{union_step_1} Run one step of $M_1$ on x
+            \item \label{union_step_2} Run one step of $M_2$ on x
+            \item \label{union_step_3} As long as either of them does not accept, repeat steps \ref{union_step_1} and \ref{union_step_2}
+            \item \label{union_step_4} If one of them accept, accept and halt
+        \end{enumerate}
+    ''
+
+    \textbf{To prove} : $M$ accepts $L = L_1 \cup L_2$
+
+    \begin{enumerate}
+    \item \textit{Proof of $L \subseteq L(M)$}:
+            
+$ 
+x \in L 
+\newline
+\Longrightarrow 
+x \in L_1 \cup L_2
+$
+$
+\newline
+\Longrightarrow
+x \in L(M_1) \lor x \in L(M_2)$
+(since $L_1 = L(M_1)$ and $L_2 = L(M_2)$)
+$
+\newline
+\Longrightarrow
+$
+Either $M_1$ or $M_2$ will halt and accept (and since we are performing one step in each machine, we will not be stuck in a loop, even if one of the machine loops on the given input)
+\newline
+$\Longrightarrow$
+$M$ halts and accepts
+\newline
+$\Longrightarrow$
+$ x \in L(M)$
+
+
+\item \textit{Proof of $L(M) \subseteq L$}:
+
+$x \in L(M)$
+$
+\newline
+\Longrightarrow
+$
+$M$ accepts $x$
+$
+\newline
+\Longrightarrow
+$
+$M_1$ accepted $x$ and $M$ reached \ref{union_step_4} in the algorithm 
+\newline$\lor$ $M_2$ accepted $x$ and $M$ reached \ref{union_step_4} in the algorithm
+$
+\newline
+\Longrightarrow
+$
+$x \in L(M_1) \lor x \in L(M_2)$
+$
+\newline
+\Longrightarrow
+$
+$x \in L_1 \lor x \in L_2$ (since $L_1 = L(M_1)$ and $L_2 = L(M_2)$)
+$
+\newline
+\Longrightarrow
+$
+$x \in L_1 \cup L_2$
+$
+\newline
+\Longrightarrow
+$
+$x \in L$
+
+
+    \end{enumerate}
+    
+Hence Proved
+
+\item \textbf{To show} : \re are closed under intersection
+    
+    Let $L_1$ and $L_2$ be the 2 \re languages and let the turing machines (not necessarily total) accepting them be $M_1$ and $M_2$ respectively.
+
+    Now we need to give a turing machine $M$, which accepts $ L = L_1 \cap L_2 $.
+
+    The description of $M$ is as follows:
+
+    ``
+        On input x,
+        \begin{enumerate}
+            \item \label{int_step_1} Run one step of $M_1$ on x
+            \item \label{int_step_2} Run one step of $M_2$ on x
+            \item \label{int_step_3} As long as both of them do not halt, repeat step \ref{int_step_1} and step \ref{int_step_2}
+            \item \label{int_step_4} If both of them accept, accept and halt
+        \end{enumerate}
+    ''
+
+    \textbf{To prove} : $M$ accepts $L = L_1 \cap L_2$
+
+    \begin{enumerate}
+    \item \textit{Proof of $L \subseteq L(M)$}:
+            
+$ 
+x \in L 
+\newline
+\Longrightarrow 
+x \in L_1 \cap L_2
+$
+$
+\newline
+\Longrightarrow
+x \in L(M_1) \land x \in L(M_2)$
+(since $L_1 = L(M_1)$ and $L_2 = L(M_2)$)
+$
+\newline
+\Longrightarrow
+$
+By the description of the machine, since both $M_1$ and $M_2$ accepts, $M$ accepts (and since we are performing one step in each machine, we will not be stuck in a loop, even if one of the machine loops on the given input)
+\newline
+$\Longrightarrow$
+$M$ halts and accepts
+\newline
+$\Longrightarrow$
+$ x \in L(M)$
+
+
+\item \textit{Proof of $L(M) \subseteq L$}:
+
+$x \in L(M)$
+$
+\newline
+\Longrightarrow
+$
+$M$ accepts $x$
+$
+\newline
+\Longrightarrow
+$
+$M_1$ accepted $x$ $\land$ $M_2$ accepted $x$  \newline
+and hence $M$ reached \ref{int_step_4} in the algorithm
+$
+\newline
+\Longrightarrow
+$
+$x \in L(M_1) \land x \in L(M_2)$
+$
+\newline
+\Longrightarrow
+$
+$x \in L_1 \land x \in L_2$ (since $L_1 = L(M_1)$ and $L_2 = L(M_2)$)
+$
+\newline
+\Longrightarrow
+$
+$x \in L_1 \cap L_2$
+$
+\newline
+\Longrightarrow
+$
+$x \in L$
+
+
+    \end{enumerate}
+    
+Hence Proved
+
+
+
+
+
+
+
+
+\end{enumerate}
+

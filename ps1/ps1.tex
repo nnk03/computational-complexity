@@ -1,0 +1,123 @@
+\documentclass[11pt, a4paper,answers]{exam}
+\usepackage{import}
+\usepackage{graphicx,fullpage,complexity}
+\usepackage{amsmath,amsthm,amssymb,amsfonts}
+\usepackage[ruled,vlined]{algorithm2e}
+\usepackage{xcolor}
+\definecolor{iitpkdcolor}{cmyk}{0,0.42,1,0} %iitpkd logo color
+\usepackage[normalem]{ulem}
+\renewcommand\ULthickness{2.0pt}   %%---> For changing thickness of underline
+\setlength\ULdepth{1.3ex}%\maxdimen ---> For changing depth of underline
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\HP}{\mathsf{HP}}
+%\newcommand{\BP}{mathsf{BP}}
+%\newcommand{\}{def}
+\begin{document}
+	%\thispagestyle{empty}
+	\noindent
+	\begin{minipage}[l]{0.1\textwidth}
+		\noindent
+		% \includegraphics[width=2.4\textwidth]{iitpkd}
+	\end{minipage}
+	\hfill
+	\begin{minipage}[c]{0.8\textwidth}
+		\begin{center}
+			{\large \textsc{\textcolor{iitpkdcolor}{Indian Institute of Technology Palakkad}} \par
+				\small	Department of Computer Science and Engineering	\par
+				\large	CS5616 Computational Complexity \par 
+				\small January May 2024}
+		\end{center}
+	\end{minipage}
+	\par
+	\vspace{2mm}
+	\hrule
+	\vspace{2mm}
+	\begin{minipage}{0.9\textwidth} 
+		\textsf{Problem Set} -- 1  \hfill  \textsf{Total Points} -- 50
+		
+		{\small \textsf{Name}: Neeraj Krishna N \hfill \small \textsf{Given on} 03 Feb}
+		
+		{\small \textsf{Roll no}: 112101033 \hfill \small \textsf{Due on} 11 Feb}
+	\end{minipage}
+	\vspace{0.2in}
+	\noindent
+	
+	\textbf{Instructions}
+	\begin{itemize}   \setlength\itemsep{0.1mm}
+		\item {\sf  Use of resources other than class notes and references is forbidden.}
+		\item {\sf Collaboration is not allowed. Credit will be given for attempts and partial answers.}
+	\end{itemize}
+
+\begin{questions}
+	
+
+\question[15] [\textbf{More properties of R and RE}] We saw in class that recursive languages are closed under complement. We will see more properties below.
+\begin{parts}
+	\part [5] Show that recursively enumerable languages are closed under union and intersection.
+	\part [5] For a language $L$, and $i \ge 1$, $L^i = \{a_1a_2\ldots a_i \mid a_1,\ldots,a_i \in L\}$. The Kleene closure of $L$, denoted by $L^*$, is defined as $ \{\epsilon\} \cup \bigcup_{i\ge 1} L^i $. Show that recursive and recursively enumerable languages are closed under Kleene closure.
+	\part [5] For languages $L_1, L_2 \subseteq \Sigma^*$, define $L_1 / L_2 = \{x \in \Sigma^* \mid \exists y \in L_2 ~xy \in L_1\}$. Show that if $L_1$ and $L_2$ are recursively enumerable, then so is $L_1/L_2$.
+\end{parts}
+
+% Uncomment the following to answer
+\begin{solution}
+	Write your answer here.
+	\begin{description}
+		\item[(a)] \import{./}{q1a.tex}
+		\item[(b)] \import{./}{q1b.tex}
+	\end{description}
+\end{solution}
+
+
+\question[10]
+[\textbf{Non-determinism}] The machines that we saw in class have a single valued transition function and hence are \textit{deterministic}. A nondeterministic Turing machine is a machine where the transition function can take multiple values.
+\begin{parts}
+	\part[5] Give a rigorous formal definition of a non-deterministic Turing machine, including a definition of configuration, next configuration relation and acceptance.
+	\part[5] Argue that deterministic machines and non-deterministic machines are equivalent (in the sense that they can simulate each other).
+\end{parts}
+
+% Uncomment the following to answer
+%\begin{solution}
+%	Write your answer here.
+%	\begin{description}
+%		\item[(a)] Answer to first part
+%		\item[(b)] Answer to second part
+%	\end{description}
+%\end{solution}
+
+
+\question[15] [\textbf{Undecidability}]
+\begin{parts}
+	\part [5]Consider the problem of deciding if two given Turing machines accept the same set. Formulate this as a language and show that it is undecidable.
+	\part [5] Consider the problem of deciding given a Turing machine and a state, whether it enters the state on some input. Formulate this as a language and show that it is
+ undecidable.
+ 	\part [5] Show that if Membership problem is undecidable, then Halting problem is undecidable. [\textit{Note: We independently know the undecidability of both the problems. Nevertheless, this question asks to prove the implication.}]
+\end{parts}
+
+% Uncomment the following to answer
+%\begin{solution}
+%	Write your answer here.
+%	\begin{description}
+%		\item[(a)] Answer to first part
+%		\item[(b)] Answer to second part
+%	\end{description}
+%\end{solution}
+
+
+\question[10] [\textbf{Decidable or Undecidable ?}]
+Let $|M|$ denote the length of the Turing machine description. Are the following problems decidable ? Justify.
+\begin{parts}
+	\part[5] Does a Turing machine $M$ takes at least $|M|$ steps on \textit{some} input ?
+	\part[5] Does a Turing machine $M$ takes at least $|M|$ steps on \textit{all} inputs ?
+\end{parts}
+
+% Uncomment the following to answer
+%\begin{solution}
+%	Write your answer here.
+%	\begin{description}
+%		\item[(a)] Answer to first part
+%		\item[(b)] Answer to second part
+%	\end{description}
+%\end{solution}
+\end{questions}
+
+\end{document}
