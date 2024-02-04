@@ -1,0 +1,32 @@
+This is decidable because every Turing Machine takes atleast $|M|$ steps on some inputs. Below is the justification
+
+Let us take a Turing Machine $M_\sigma$ whose description is as follows
+\newline
+``
+\newline
+    On input $M$,
+    \begin{enumerate}
+        \item If $M$ is not a valid encoding of Turing Machine, reject
+        \item Else accept
+    \end{enumerate}
+''
+
+
+The above machine accepts any valid encoding of Turing Machine. The above machine is total because there exists a \textbf{total turing machine} which checks if a string is a valid encoding of a Turing Machine
+
+
+Let us take an arbitrary Turing Machine $M$
+\newline
+Let $n = |M|$
+\newline
+Let string $x$ be $0^{|M| + 1}$
+\newline
+For this string, the Turing Machine will take atleast $|M|$ steps
+\newline
+Hence for every Turing Machine $M$, there exists an input for which $M$ will take atleast $|M|$ steps.
+
+
+
+
+
+
