@@ -1,0 +1,81 @@
+\newcommand{\la}{\langle}
+\newcommand{\ra}{\rangle}
+\newcommand{\imp}{$\Rightarrow$}
+Let the language be 
+
+$L = \{\langle M_1, M_2 \rangle \mid L(M_1) = L(M_2)\}$
+
+We will show that if $L$ is decidable, then $HP^\complement$ is decidable
+
+Let $M_\sigma$ be a machine such that on input $\langle M, x \rangle$, it produces a description of 2 machines $\la M_1, M_2 \ra$ which are as follows
+
+\textbf{Description of $M_1$} :
+
+``
+On input y,
+\begin{enumerate}
+    \item[(a)] Run M on x
+    \item[(b)] If M halts on x, Accept
+\end{enumerate}
+''
+
+\textbf{Description of $M_2$} :
+
+``
+On input y,
+\begin{enumerate}
+    \item[(a)] Run M on x
+    \item[(b)] If M halts on x, Reject
+\end{enumerate}
+''
+
+We will prove that $\la M, x \ra \in HP \Leftrightarrow \la M_1, M_2 \ra \notin L$
+
+Proof of forward direction
+
+$\la M, x \ra \in HP$
+
+\imp
+$M$ halts on $x$
+
+\imp
+$M_1$ accepts all strings and $M_2$ rejects all strings
+
+\imp
+$L(M_1) = \Sigma ^ *$ and $L(M_2) = \phi$
+
+\imp
+$L(M_1) \neq L(M_2)$
+
+\imp
+$\la M_1, M_2 \ra \notin L$
+
+Proof of reverse direction
+
+$\la M, x \ra \notin HP$
+
+\imp
+$M$ does not halt on $x$
+
+\imp
+$L(M_1) = \phi$ and $L(M_2) = \phi$
+
+\imp
+$L(M_1) = L(M_2)$
+
+\imp
+$\la M_1, M_2 \ra \in L$
+
+
+Hence, $L$ is undecidable
+
+
+
+
+
+
+
+
+
+
+

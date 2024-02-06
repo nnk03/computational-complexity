@@ -13,7 +13,8 @@
         \begin{enumerate}
             \item \label{union_step_1} Run one step of $M_1$ on x
             \item \label{union_step_2} Run one step of $M_2$ on x
-            \item \label{union_step_3} As long as either of them does not accept, repeat steps \ref{union_step_1} and \ref{union_step_2}
+            \item \label{union_step_3} As long as either of them does not accept, repeat steps (a) and (b)
+            % \ref{union_step_1} and \ref{union_step_2}
             \item \label{union_step_4} If one of them accept, accept and halt
         \end{enumerate}
     ''
@@ -59,8 +60,12 @@ $
 \newline
 \Longrightarrow
 $
-$M_1$ accepted $x$ and $M$ reached \ref{union_step_4} in the algorithm 
-\newline$\lor$ $M_2$ accepted $x$ and $M$ reached \ref{union_step_4} in the algorithm
+$M_1$ accepted $x$ and $M$ reached (d)
+% \ref{union_step_4} 
+in the algorithm 
+\newline$\lor$ $M_2$ accepted $x$ and $M$ reached (d)
+% \ref{union_step_4} 
+in the algorithm
 $
 \newline
 \Longrightarrow
@@ -100,7 +105,10 @@ Hence Proved
         \begin{enumerate}
             \item \label{int_step_1} Run one step of $M_1$ on x
             \item \label{int_step_2} Run one step of $M_2$ on x
-            \item \label{int_step_3} As long as both of them do not halt, repeat step \ref{int_step_1} and step \ref{int_step_2}
+            \item \label{int_step_3} As long as both of them do not halt, repeat step (a)
+            % \ref{int_step_1} 
+            and step (b)\
+            % ref{int_step_2}
             \item \label{int_step_4} If both of them accept, accept and halt
         \end{enumerate}
     ''
@@ -147,7 +155,9 @@ $
 \Longrightarrow
 $
 $M_1$ accepted $x$ $\land$ $M_2$ accepted $x$  \newline
-and hence $M$ reached \ref{int_step_4} in the algorithm
+and hence $M$ reached (d)
+% \ref{int_step_4} 
+in the algorithm
 $
 \newline
 \Longrightarrow

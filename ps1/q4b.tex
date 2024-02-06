@@ -1,9 +1,58 @@
-??????
+Let the language be $L = \{M$ $|$ $M$ takes at least $ |M| $ steps on all inputs$\} $
 \newline
 This is undecidable because, we can show that if the given problem is decidable, then $HP$ is decidable.
 Let us take a turing machine $M_\sigma$ which on input $\langle M, x \rangle$, provides a description of another turing machine $M'$ which is 
+\newline
 ``
+    On input $y$, 
+        \begin{enumerate}
+            \item[(1)] Run $M$ on $x$
+            \item[(2)] If $M$ halts on $x$, perform $|M'|$ steps and accept
+        \end{enumerate}
 ''
+
+
+We will prove that $\langle M, x \rangle \in HP \Leftrightarrow M' \in L$
+
+Proof of forward direction
+\newline
+$\langle M, x \rangle \in HP$ 
+\newline
+$\Rightarrow$ 
+$M$ halts on $x$
+\newline
+$\Rightarrow$
+$M'$ reaches step (2) and performs atleast $|M'|$ steps and then accepts
+\newline
+$\Rightarrow$
+$M' \in L$
+
+Proof of reverse direction
+\newline
+$\langle M, x \rangle \notin HP$ 
+\newline
+$\Rightarrow$
+$M$ does not halt on $x$
+\newline
+$\Rightarrow$
+$M'$ is stuck in step 1 itself
+\newline
+$\Rightarrow$
+$M'$ does not perform even a single step on any input
+\newline
+$\Rightarrow$
+$M' \notin L$
+
+Since $HP$ is undecidable, $L$ is undecidable
+
+
+
+
+
+
+
+
+
 
 
 
