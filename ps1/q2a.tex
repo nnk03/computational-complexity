@@ -1,4 +1,4 @@
-Non-deterministic Turing Machine is a $9$-tuple $M = (Q, \Sigma, \Gamma, \vdash, \sqcup, \delta, s, t, r)$ where
+Non-deterministic Turing Machine is a $9$-tuple $N = (Q, \Sigma, \Gamma, \vdash, \sqcup, \Delta, s, t, r)$ where
 
 \begin{itemize}
     \item $Q$ is a finite set of states
@@ -6,7 +6,7 @@ Non-deterministic Turing Machine is a $9$-tuple $M = (Q, \Sigma, \Gamma, \vdash,
     \item $\Gamma$ is the finite set of tape symbols
     \item $\vdash \in \Gamma \setminus \Sigma$ is the left end marker
     \item $\sqcup \in \Gamma \setminus \Sigma$ is the blank symbol
-    \item $\delta : Q \times \Gamma  \rightarrow 2 ^ {Q \times \Gamma \times \{L, R\}}$ is the transition relation
+    \item $\Delta : Q \times \Gamma  \rightarrow 2 ^ {Q \times \Gamma \times \{L, R\}}$ is the transition relation
     \item $s \in Q$ is the start state
     \item $t \in Q$ is the accept state
     \item $r \in Q$ is the reject state
@@ -20,7 +20,7 @@ A configuration $c$ is a tuple of $(q, w\sqcup ^ \omega, n)$ where $q \in Q$, $w
 \newline
 It is the single step transition from one configuration to a set of configurations.
 $(p, z, n) \rightarrow (q, z', n')$ where 
-$ n' = n + 1$ if head moved right, else if head moved left, $n' = n - 1$, else $n' = n$ and $((p, z), (q, z')) \in \delta$
+$ n' = n + 1$ if head moved right, else if head moved left, $n' = n - 1$, else $n' = n$ and $((p, z), (q, z')) \in \Delta$
 
 \textbf{Acceptance} : 
 \newline

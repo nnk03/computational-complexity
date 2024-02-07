@@ -1,0 +1,52 @@
+
+Let the language be $L = \{ \la M, q \ra \mid M$ enters state $q$ on some input$\}$ 
+
+We will show that if $L$ is decidable, then $HP$ is decidable
+
+Let $M_\sigma$ be a machine such which produces an instance of $L$, given an instance of $HP$ , i.e 
+on input $\la M, x \ra$, $M_\sigma$ outputs $\la M', t \ra$ where $t$ is the accept state of $M'$ and the description of $M'$ is as follows :
+
+``
+
+On input $y$,
+\begin{enumerate}
+    \item[(a)] Run $M$ on $x$
+    \item[(b)] If $M$ halts on $x$, then enter accept state and accept
+\end{enumerate}
+
+''
+
+We will now show that
+$\la M, x \ra \in HP \Leftrightarrow \la M', t \ra \in L$
+
+Proof of forward direction : 
+
+$\la M, x \ra \in HP$
+
+$\Rightarrow$
+$M$ halts on $x$
+
+$\Rightarrow$
+$M'$ enters $t$ and accepts for all inputs $y$
+
+$\Rightarrow$
+$\la M, t \ra \in L$
+
+
+Proof of reverse direction : 
+
+$\la M, x \ra \notin HP$
+
+$\Rightarrow$
+$M$ does not halt on $x$
+
+$\Rightarrow$
+$M'$ loops and never enters state $t$ for any input
+
+$\Rightarrow$
+$\la M', t \ra \notin L$
+
+Hence $L$ is undecidable
+
+
+

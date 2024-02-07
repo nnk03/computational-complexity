@@ -1,0 +1,56 @@
+We need to show that if $MP$ is undecidable, then $HP$ is undecidable which is same as proving its contrapositive, i.e
+
+$HP$ is decidable \imp $MP$ is decidable
+
+Let $M_\sigma$ be a machine which on input $\la M, x \ra$ (an instance of $MP$) outputs $ \la M', \epsilon\ra $ (which is an instance of $HP$) where the description of $M'$ is as follows:
+
+``
+
+On input y,
+\begin{enumerate}
+    \item[(a)] Run M on x
+    \item[(b)] If M accepts x, halt
+    \item[(c)] If M rejects x, loop
+\end{enumerate}
+
+''
+
+Now, we will show that $\la M, x \ra \in MP \Leftrightarrow \la M', \epsilon \ra \in HP$
+
+Proof of forward direction : 
+
+$\la M, x \ra \in MP$
+
+\imp
+$M$ accepts $x$
+
+\imp
+$M'$ halts on every input, in particular $\epsilon$ also
+
+\imp
+$\la M', \epsilon \ra \in HP$
+
+
+Proof of reverse direction : 
+
+$\la M, x \ra \notin MP$
+
+\imp
+$M$ does not accept $x$
+
+\imp
+$M$ rejects $x$ or $M$ loops on $x$
+
+\imp
+If $M$ rejects $x$, then $M'$ loops on every input (in particular $\epsilon$)
+and
+
+If $M$ loops on $x$, then also $M'$ gets stuck in step (a) and $M'$ loops on every input (in particular $\epsilon$)
+
+\imp
+$\la M', \epsilon \ra \notin HP$
+
+Hence proved that if $MP$ is undecidable, then $HP$ is undecidable
+
+
+

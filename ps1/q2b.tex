@@ -1,0 +1,123 @@
+\begin{enumerate}
+\item 
+Let $M = (Q, \Sigma, \Gamma, \vdash, \sqcup, \delta, s, t, r)$ be a deterministic Turing Machine 
+
+We want to construct an equivalent Turing Machine 
+
+$N = (Q', \Sigma', \Gamma', \vdash, \sqcup, \Delta, s', t', r')$
+
+Now let
+
+$Q' = Q$
+
+$\Sigma' = \Sigma$
+
+$\Gamma' = \Gamma$
+
+$\Delta(p, z) = \{\delta(p, z)\}$
+
+$s' = s$
+
+$t' = t$
+
+$r' = r$
+
+Now we have to prove $L(M) = L(N)$
+
+Proof of $L(M) \subseteq L(N)$ :
+
+
+$x \in L(M)$
+
+\imp
+There is set of steps for $M$ which leads to terminal accept state $t$
+
+\imp
+Since $\Delta$ has only one transition for every possible tuple $(p, z)$, $N$ will also take the same steps as $M$
+
+\imp
+$x \in L(N)$
+
+Proof of $L(N) \subseteq L(M)$ : 
+
+$x \in L(N)$
+
+\imp
+There is a set of steps for which $N$ reaches $t'$
+
+\imp
+Since $\Delta$ has only one transition for every possible tuple $(p, z)$, it behaves like a deterministic turing machine
+
+\imp
+$M$ also takes the exact same transitions for input $x$ and reaches the accept state $t$
+
+\imp
+$x \in L(M)$
+
+Hence $L(M) = L(N)$ and we have proved that every deterministic Turing Machine can be simulated using a Non deterministic Turing Machine
+
+\item 
+Let $N = (Q, \Sigma, \Gamma, \vdash, \sqcup, \Delta, s, t, r)$ be a non deterministic Turing Machine 
+
+We want to construct an equivalent deterministic Turing Machine 
+
+$M = (Q', \Sigma', \Gamma', \vdash, \sqcup, \delta, s', t', r')$ such that it accepts the same language as that of $N$
+
+Let 
+
+$Q' = 2 ^ {Q}$
+
+$\Sigma' = \Sigma$
+
+$\Gamma' = \Gamma$
+
+$s' = \{s\} \in Q'$
+
+$t' = \{ t \} \in Q'$
+
+$r' = \{ r \} \in Q'$
+
+Now for $\delta$,
+
+Let $q' = \{q_1, q_2, \dots, q_i\}$ for some $i \in \{0, 1, \dots, |Q|\}$, where each $q_i \in Q$ (if $i = 0$, then $q' = \phi$)
+
+$\delta(q', z) = \bigcup_{q_i \in Q}{\Delta(q_i, z)}$
+
+Now, we have to prove $L(N) = L(M)$
+
+Proof of $L(N) \subseteq L(M)$ : 
+
+$x \in L(N)$
+
+\imp
+There exists a non deterministic set of choices for the machine $N$ which leads to the terminal state $t'$
+
+\imp
+Since, $M$ is in essence, simulating every possible transitions of $N$, there exists a transition $\delta(\cdot) $ for which $(t, z) \in \delta(\cdot)$ for some $z$
+
+\imp
+$M$ accepts $x$
+
+\imp
+$x \in L(M)$
+
+
+$x \in L(M)$
+
+\imp
+There exists a set of transitions at the end of which $(t, z) \in \delta(\cdot)$
+
+\imp
+Then, if we take the same set of non deterministic choices in the non deterministic turing machine, we will reach $t$ in $N$
+
+\imp
+$x \in L(N)$
+
+Hence showed that $L(N) = L(M)$ and hence every non deterministic turing machine can be simulated by a deterministic turing machine
+
+(
+This construction works only because all of the following are finite : 
+$Q, \Sigma, \Gamma$
+)
+
+\end{enumerate}
