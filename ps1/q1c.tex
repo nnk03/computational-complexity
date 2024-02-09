@@ -1,0 +1,123 @@
+
+Let the Turing machines (not necessarily total) that accepts $L_1$ and $L_2$ be $M_1$ and $M_2$
+
+Let $L = L_1 / L_2 = \{x \in \Sigma^* \mid \exists y \in L_2$, $xy \in L_1\}$
+
+Let us first define another Turing Machine $M''$ which takes the input $\la x, y \ra$  
+$M''$ = 
+
+``
+
+On input $\la x, y \ra$,
+\begin{enumerate}
+    \item[(a)] Runs $M_1$ on $xy$ and $M_2$ on $y$ in a time shared fashion
+    \item[(b)] If both $M_1$ and $M_2$ accept, accept 
+\end{enumerate}
+
+''
+
+Let $L'' = \{\la x, y \ra \mid xy \in L_1, y \in L_2\}$
+
+We will prove that $L(M'') = L''$
+
+$ \la x, y \ra \in L(M'') $
+
+\imp
+$M''$ accepted $\la x, y \ra$
+
+\imp
+$M_1$ accepted $xy$ and $M_2$ accepted $y$
+
+\imp
+$xy \in L(M_1)$ and $y \in L(M_2)$
+
+\imp
+$xy \in L_1$ and $y \in L_2$ since $L(M_1) = L_1$ and $L(M_2) = L_2$
+
+\imp
+$\la x, y \ra \in L''$
+
+
+$\la x, y \ra \in L''$
+
+\imp
+$xy \in L_1$ and $y \in L_2$ 
+
+\imp
+$xy \in L(M_1)$ and $y \in L(M_2)$ since $L(M_1) = L_1$ and $L(M_2) = L_2$ 
+
+\imp
+$M_1$ accepts $xy$ and $M_2$ accepts $y$
+
+\imp
+$M''$ accepts $\la x, y \ra$
+
+\imp
+$\la x, y \ra \in L(M'')$
+
+Now we will construct an infinite tape turing machine $M_\infty$ which accepts $L$ (Since we know that infinite tape turing machine can be simulated using a single tape turing machine, we can prove that $L$ is recursive enumerable)
+
+Let us index the tapes as $T_\epsilon$, $T_0$, $T_1$, $T_{00}$, $T_{01}$, $T_{10}$, $T_{11}$, $\dots$
+
+$M_\infty$ = 
+
+``
+
+On input x,
+\begin{enumerate}
+    \item[(a)] In each tape $T_y$, Run the machine $M''$ on the input $\la x, y \ra$ $\forall y \in \Sigma^*$ in a time shared fashion 
+    \item[(b)] If any of the machine accepts, accept
+\end{enumerate}
+
+''
+
+
+Let us prove that $L(M_\infty) = L$
+
+Proof of $L(M_\infty) \subseteq L$
+
+$x \in L(M_\infty)$
+
+\imp
+$M_\infty$ accepts $x$
+
+\imp
+There existed a $y \in \Sigma^*$ for which the machine $M''$ (which was running on the tape $T_y$) accepted the input $\la x, y \ra$
+
+\imp
+$\la x, y \ra \in L''$
+
+\imp
+$x \in L$
+
+
+Proof of $L \subseteq L(M_\infty)$
+
+$x \in L$
+
+\imp
+There exists a $y \in \Sigma^*$ for which $\la x, y \ra \in L''$
+
+\imp
+In the machine $M_\infty$, there exists a tape $T_y$ where the turing machine $M''$ running on that tape will accept
+
+\imp
+$M_\infty$ will accept $x$
+
+\imp
+$x \in L(M_\infty)$
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,8 +1,8 @@
 # Fdb version 3
-["pdflatex"] 1707482651 "/home/neeraj/Desktop/sem-6/computational-complexity/ps2/ps2.tex" "ps2.pdf" "ps2" 1707482651
+["pdflatex"] 1707488403 "/home/neeraj/Desktop/sem-6/computational-complexity/ps2/ps2.tex" "ps2.pdf" "ps2" 1707488404
   "/etc/texmf/web2c/texmf.cnf" 1707025171 475 c0e671620eb5563b2130f56340a5fde8 ""
   "/home/neeraj/.texlive2021/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1095.600pk" 1707071200 12644 3d7606e7913b8a159bb1ed8872402fdd ""
-  "/home/neeraj/Desktop/sem-6/computational-complexity/ps2/ps2.tex" 1707482651 3805 ce46c4efe498dc7e5bf413551411e2b7 ""
+  "/home/neeraj/Desktop/sem-6/computational-complexity/ps2/ps2.tex" 1707488403 3809 86b584fedf567f4955d8b1a14b8664e6 ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/tcrm1095.tfm" 1136768653 1536 02c06700a42be0f5a28664c7273f82e7 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
@@ -84,8 +84,8 @@
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1707071529 165012 f177baa1c39a3ebd62c3096a43521a0d ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1707071533 1435925 92d1299b9fb271cd64a454e4ace00fc4 ""
   "iitpkd.png" 1707379802 144034 bb75da5cfe214583f61b1d0e050a9b62 ""
-  "ps2.aux" 1707482651 1252 b58b0d9a67b2a511dc629d8967d7a0c9 "pdflatex"
-  "ps2.tex" 1707482651 3805 ce46c4efe498dc7e5bf413551411e2b7 ""
+  "ps2.aux" 1707488404 1252 b58b0d9a67b2a511dc629d8967d7a0c9 "pdflatex"
+  "ps2.tex" 1707488403 3809 86b584fedf567f4955d8b1a14b8664e6 ""
   (generated)
   "ps2.aux"
   "ps2.log"

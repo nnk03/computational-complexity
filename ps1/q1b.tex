@@ -1,0 +1,208 @@
+% \begin{enumerate}
+% \item When $L$ is decidable
+
+Let $M$ be the turing machine which accepts $L$
+
+Let $M_k$ denote a k-tape Turing machine whose description is as follows,
+
+$M_k$ =
+
+``
+
+On input $\la x_1, x_2, \dots, x_k \ra$,
+    \begin{enumerate}
+        \item[(a)] In a time shared fashion, On tape $T_i$ where $i \in \{1,\dots, k \}$, Run $M$ on $x_i$
+        \item[(b)] Accept if all machines accept
+    \end{enumerate}
+
+''
+
+Let $L_k = \{\la x_1, x_2, \dots, x_k \ra \mid x_i \in L$ $\forall i \in \{1,\dots,k \}\}$
+
+Proof of $L(M_k) = L_K$
+
+$ \la x_1, x_2, \dots, x_k \ra\in L(M_k)$
+
+$\Leftrightarrow$
+$x_i \in L \forall i \in \{1,\dots,k \}$
+
+$\Leftrightarrow$
+The machine on tape $T_i$ accepts for all $i$
+
+$\Leftrightarrow$
+$M_k$ accepts
+
+$\Leftrightarrow$
+$\la x_1, x_2, \dots, x_k \ra \in L(M_k)$
+
+
+
+
+
+Let us describe a turing machine $M^*$ with infinite tapes, which accepts the language $L^*$
+
+
+
+$M^*$ = 
+
+``
+
+On input $x$,
+    \begin{enumerate}
+        \item[(a)] If $ x = \epsilon$, accept
+        \item[(b)] Else $x = x_1x_2x_3\dots x_n$ where $n = |x|$
+        \begin{enumerate}
+            \item Let the tapes be denoted by $T_{(i, k)}$ where $k$ denotes the number of splits of string $x$ and $i \in \binom{n - 1}{k}$ denotes the different possible splits
+
+            (For example, if $k = 1$, then $T_{(i, 1)}$ denotes the string 
+            
+            $\la x_1x_2\dots x_i, x_{i +1}\dots x_n\ra)$
+
+
+            \item For all $k \in \{0\dots ,n - 1\}$ and for all $i \in \{1,\dots,\binom{n - 1}{k }\}$ Run $M_{k +1}$ on the tape $T_{(i, k)}$ in a time shared fashion
+            \item Accept if any one of the machines accept
+        \end{enumerate} 
+    \end{enumerate}
+
+''
+
+Proof of $L(M^*) = L^*$
+
+$x \in L^*$
+
+\imp
+There exists a way of splitting the string $x$ using $k$ splits, for some $k$ for which $\la x_1, x_2, \dots, x_{k + 1} \ra \in L_{k + 1}$ (or $x = \epsilon$ in which case the machine accepts)
+
+\imp
+Since the Turing machine is checking all possible splits, it is bound to find some $(k, i)$ such that the machine $M_{k + 1}$ running on tape $T_{(i, k)}$ accepts
+
+\imp
+$M^*$ accepts $x$
+
+\imp
+$x \in L(M^*)$
+
+
+$x \in L(M^*)$
+
+\imp
+$M^*$ accepted $x$
+
+\imp
+There existed a $(k, i)$ such that the machine $M_{k + 1}$ running on tape $T_{(i, k)}$ accepted
+
+\imp
+That $(i, k)$ is a valid split of the string $x = x_1x_2\dots x_{k + 1}$ 
+
+such that $\la x_1, x_2, \dots, x_{k + 1} \ra \in L_{k + 1}$
+
+
+\imp
+$x \in L^*$
+
+Hence $L(M^*) = L^*$
+
+We already know that infinite tape turing machine are equivalent to single tape turing machines, Hence the above construction of $M^*$ is a valid turing machine construction
+
+
+Since, nowhere in the above proof did we assume that the turing machine is total, Hence the same reduction works for both recursive and recursively enumerable languages
+
+The only difference being, if it is recursive, all the machines described above \textbf{will be} total, since every step halts at some Points
+
+
+Hence proved that recursive and recursively enumerable languages are closed under Kleene closure
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+% Let $belongs(x)$ be the total turing machine which accepts $L$
+
+% Below is a Turing Machine $M$ (a Python code) which accepts the Kleene closure of $L$
+
+% Note : If $x = x_0x_1x_2\dots x_n$, then $x[0 : i]$ denotes the string $x_0x_1\dots x_{i-1}$ and $x[i:]$ denotes the string $x_ix_{i+1}\dots x_n$
+
+% \lstset{language=Python}
+% \begin{lstlisting}
+%     def check(x : str):
+%         if x == '':
+%             return True
+        
+%         for i in range(1, len(x)):
+%             if belongs(x[0: i]) and check(x[i:]):
+%                 return True
+%         return False
+% \end{lstlisting}
+
+% Now we have to prove that $L(M) = L$
+
+% The above is a backtracking algorithm which in the worst case, takes all possible splits of the input string and checks if it is in the language $L$
+
+% Let $x = x_0x_1\dots x_n$
+
+% Let us, for the time being assume that $check(y)$ gives the correct answer for $y = x[i:]$ for all $i \in {1\dots n}$
+
+% Now, to prove $L^* = L(M)$
+
+% $x \in L^*$
+
+% \imp
+% $\exists i \in \{1,\dots , n\}$ such that $x[0:i] \in L$ and $x[i:] \in L^*$
+
+
+% \imp
+% $belongs(x[0:i])$ returns True and $check(x[i:])$ returns True by our assumption
+
+% \imp
+% $check(x)$ returns True
+
+% \imp
+% $M$ accepts $x$
+
+
+% $M$ accepts $x$
+
+% \imp
+% $check(x)$ returns True
+
+% \imp
+% $\exists i \in \{1,\dots, n \}$ such that $belongs(x[0:i])$ returns True and $check(x[i:])$ returns True
+
+% \imp
+% $x[0:i] \in L$ and $x[i:] \in L^*$ (by our assumption that $check$ returns the correct answer for $i \in \{1, \dots, n \} $)
+
+% \imp
+% $\exists i \in \{1,\dots , n\}$ such that $x[0:i] \in L$ and $x[i:] \in L^*$
+
+% \imp
+% $x \in L^*$
+
+% Correctness of $check$ is guaranteed because, if there existed a set of substrings, say
+% $X_1, X_2, \dots X_k$ whose concatenation is $x$ and if $X_i \in L$ $ \forall i$, then the algorithm finds such a split because it checks all the substrings if it belongs to $L$
+
+% % Let $P(i)$ denote whether $check$ returns the correct answer for $x[j:] \forall j \in \{i, i + 1, \dots, n \}$
+
+% % We have proved that
+% % $P(1)$ 
+
+
+
+
+% \end{enumerate}
+
+
+
+
+
+
+
