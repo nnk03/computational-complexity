@@ -2,10 +2,12 @@
 \usepackage{graphicx,fullpage,complexity}
 \usepackage{amsmath,amsthm,amssymb}
 \usepackage{xcolor}
+\usepackage{import}
 \definecolor{iitpkdcolor}{cmyk}{0,0.42,1,0} %iitpkd logo color
 \usepackage[normalem]{ulem}
 \renewcommand\ULthickness{2.0pt}   %%---> For changing thickness of underline
 \setlength\ULdepth{1.3ex}%\maxdimen ---> For changing depth of underline
+\import{./}{new_commands}
 \newcommand{\N}{\mathbb{N}}
 \newcommand{\HP}{\mathsf{HP}}
 \newcommand{\TOTAL}{\mathsf{TOTAL}}
@@ -52,7 +54,8 @@
 
 % Uncomment the following to answer
 \begin{solution}
-	Write your answer here.
+	% Write your answer here.
+	\import{./q1}{q1}
 \end{solution}
 
 \question[20] [\textbf{Reduction by containment !}] Let $L_1, L_2 \subseteq \Sigma^*$ where $L_1 \subseteq L_2$. Consider the statements \textbf{(1)} ``$L_2 \le_m L_1$'' \textbf{(2)} ``$L_1 \le_m L_2$'' 
@@ -63,6 +66,14 @@
 	\begin{enumerate} \item[(a)] ``for any $L_1, L_2$ with $L_1 \subseteq L_2$, \textbf{(1)} is true.''  
 		\item[(b)]  ``for any $L_1, L_2$ with $L_1 \subseteq L_2$, \textbf{(2)} is true.'' \end{enumerate}
 \end{parts}
+\begin{solution}
+	% Write your answer here.
+	\begin{enumerate}
+		\item[(a)] \import*{./q2}{q2a}
+		\item[(b)] \import*{./q2}{q2b}
+		\item[(c)] \import*{./q2}{q2c}
+	\end{enumerate}
+\end{solution}
 
 % Uncomment the following to answer
 %\begin{solution}
@@ -76,6 +87,10 @@
 
 \question[10] 	[\textbf{Proof of Rice's theorem 1}] In the proof of Rice's theorem for showing undecidability done in class,  we assumed that the non-trivial property $\mathcal{P}$ is false for $\emptyset$.  Explain how can this assumption be removed.  [\textit{Hint: Use $\overline{\HP}$ !}]
 
+\begin{solution}
+	% Write your answer here.
+	\import*{./q3}{q3}
+\end{solution}
 % Uncomment the following to answer
 %\begin{solution}
 %	Write your answer here.
@@ -90,6 +105,13 @@
 	\part Show that the languages $\TOTAL$ as well as $\overline{\TOTAL}$ are not semi-decidable. 
 \end{parts}
 
+\begin{solution}
+	% Write your answer here.
+	\begin{enumerate}
+		\item[(a)] \import*{./q4}{q4a}
+		\item[(b)] \import*{./q4}{q4b}
+	\end{enumerate}
+\end{solution}
 
 % Uncomment the following to answer
 %\begin{solution}

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2024.2.5)  9 FEB 2024 19:50
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2024.2.5)  11 FEB 2024 02:44
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -214,6 +214,8 @@ Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1372.
 Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1373.
 Package xcolor Info: Model `Gray' substituted by `gray' on input line 1374.
 Package xcolor Info: Model `wave' substituted by `hsb' on input line 1375.
+) (/usr/share/texlive/texmf-dist/tex/latex/import/import.sty
+Package: import 2020/04/01  v 6.2
 ) (/usr/share/texlive/texmf-dist/tex/generic/ulem/ulem.sty
 \UL@box=\box53
 \UL@hyphenbox=\box54
@@ -225,27 +227,27 @@ Package xcolor Info: Model `wave' substituted by `hsb' on input line 1375.
 \ULC@box=\box55
 Package: ulem 2019/11/18
 \ULdepth=\dimen155
-) (/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
+) (././new_commands.tex) (/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 File: l3backend-pdftex.def 2022-01-12 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count313
 \l__pdf_internal_box=\box56
 ) (./ps2.aux)
 \openout1 = `ps2.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
  (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count314
@@ -292,43 +294,43 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 <iitpkd.png, id=1, 243.65314pt x 216.81pt>
 File: iitpkd.png Graphic file (type png)
 <use iitpkd.png>
-Package pdftex.def Info: iitpkd.png  used on input line 18.
+Package pdftex.def Info: iitpkd.png  used on input line 20.
 (pdftex.def)             Requested size: 108.71863pt x 96.73984pt.
 
-Overfull \hbox (63.41908pt too wide) in paragraph at lines 17--19
+Overfull \hbox (63.41908pt too wide) in paragraph at lines 19--21
 [] 
  []
 
-LaTeX Font Info:    Trying to load font information for U+msa on input line 19.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 21.
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 19.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 21.
  (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-)
-Overfull \hbox (6.77097pt too wide) in paragraph at lines 87--88
+) (./q1/q1.tex) [1
+
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./iitpkd.png>] [2] (./q2/q2a.tex) (./q2/q2b.tex) (./q2/q2c.tex) (./q3/q3.tex)
+Overfull \hbox (6.77097pt too wide) in paragraph at lines 102--103
 []\OT1/cmr/m/n/10.95 [\OT1/cmr/bx/n/10.95 Rice's the-o-rem ?\OT1/cmr/m/n/10.95 ] De-fine the lan-guage $[] = \OMS/cmsy/m/n/10.95 f\OML/cmm/m/it/10.95 M \OMS/cmsy/m/n/10.95 j []g$\OT1/cmr/m/n/10.95 . 
  []
 
-[1
-
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./iitpkd.png>]
+(./q4/q4a.tex) (./q4/q4b.tex) [3]
 This exam contains 4 questions with 5 parts, 0 subparts, and 0 subsubparts.
 (./ps2.aux) ) 
 Here is how much of TeX's memory you used:
- 5376 strings out of 480171
- 77297 string characters out of 5894490
- 382218 words of memory out of 5000000
- 23260 multiletter control sequences out of 15000+600000
+ 5478 strings out of 480171
+ 78951 string characters out of 5894490
+ 387624 words of memory out of 5000000
+ 23325 multiletter control sequences out of 15000+600000
  477762 words of font info for 60 fonts, out of 8000000 for 9000
  59 hyphenation exceptions out of 8191
- 60i,7n,67p,395b,304s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 60i,9n,67p,416b,350s stack positions out of 5000i,500n,10000p,200000b,80000s
  </home/neeraj/.texlive2021/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1095.600pk></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on ps2.pdf (1 page, 239730 bytes).
+Output written on ps2.pdf (3 pages, 248275 bytes).
 PDF statistics:
- 71 PDF objects out of 1000 (max. 8388607)
- 42 compressed objects within 1 object stream
+ 77 PDF objects out of 1000 (max. 8388607)
+ 46 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  6 words of extra memory for PDF output out of 10000 (max. 10000000)
 
