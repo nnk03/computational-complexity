@@ -1,0 +1,131 @@
+\documentclass[12pt, a4paper,answers]{exam}
+\usepackage{graphicx,fullpage,complexity}
+\usepackage{amsmath,amsthm,amssymb}
+\usepackage{xcolor}
+\definecolor{iitpkdcolor}{cmyk}{0,0.42,1,0} %iitpkd logo color
+\usepackage[normalem]{ulem}
+\usepackage{import}
+
+\renewcommand\ULthickness{2.0pt}   %%---> For changing thickness of underline
+\setlength\ULdepth{1.3ex}%\maxdimen ---> For changing depth of underline
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\HP}{\mathsf{HP}}
+\newcommand{\ALL}{\mathsf{ALL}}
+\newcommand{\TOTAL}{\mathsf{TOTAL}}
+\renewcommand{\D}{\mathcal{D}}
+\newcommand{\SD}{\mathcal{SD}}
+%\newcommand{\BP}{mathsf{BP}}
+%\newcommand{\}{def}
+\begin{document}
+	\include{new_commands}
+	%\thispagestyle{empty}
+	\noindent
+	\begin{minipage}[l]{0.1\textwidth}
+		\noindent
+		\includegraphics[width=2.4\textwidth]{iitpkd}
+	\end{minipage}
+	\hfill
+	\begin{minipage}[c]{0.8\textwidth}
+		\begin{center}
+			{\large \textsc{\textcolor{iitpkdcolor}{Indian Institute of Technology Palakkad}} \par
+				\small	Department of Computer Science and Engineering	\par
+				\large	CS5616 Computational Complexity \par 
+				\small January -- May 2024}
+		\end{center}
+	\end{minipage}
+	\par
+\vspace{2mm}
+\hrule
+\vspace{2mm}
+\begin{minipage}{0.9\textwidth} 
+	\textsf{Problem Set} -- 3  \hfill  \textsf{Total Points} -- 50
+	
+	{\small \textsf{Name}: Neeraj Krishna N   \hfill \small \textsf{Given on} 29 Feb}
+
+	
+	{\small \textsf{Roll no}: 112101033 \hfill \small \textsf{Due on} 11 Mar}
+\end{minipage}
+	\vspace{0.2in}
+\noindent
+
+\textbf{Instructions}
+\begin{itemize}   \setlength\itemsep{0.1mm}
+	\item {\sf  Use of resources other than class notes and references is forbidden.}
+	\item {\sf Collaboration is not allowed. Credit will be given for attempts and partial answers.}
+\end{itemize}
+
+
+\begin{questions}
+
+\question[10] (\textbf{RE vs co-RE}) Show that the set \[ \{M \mid M \text{ halts on all inputs of length less than $42$}\}\] is recursively enumerable, but is its complement is not.
+
+\begin{solution}
+	\import*{./q1}{q1.tex}
+\end{solution}
+
+	\question[10] (\textbf{Alternate definition for $\Delta_i$}) Let $A$ be any language. Define $\D^A$ be the class of all languages $L$ such that $L$ is decidable in $A$. Similarly, $\SD^A$ be the class of all $L$ such that $L$ is semi-decidable in $A$ and $\co\SD^A $ be the class of all languages whose complement is in $\SD^A$.
+	
+	\begin{parts}
+	\part[5] Show that $\D^A = \SD^A \cap \co\SD^A$.
+	
+	\part[5] For any $i \ge 1$, by definition, $\Delta_i = \Sigma_i \cap \Pi_i$. Show that  \[ \Delta_i = \{L \mid \text{ there exists } A \in \Sigma_{i-1} \text{ such that } L \text{ is decidable in A}\}. \]
+	\end{parts}
+
+\begin{solution}
+	\begin{enumerate}
+		\item[(a)] \include{./q2/q2a}
+		\item[(b)] \include{./q2/q2b}
+	\end{enumerate}
+\end{solution}
+
+% Uncomment the following to answer
+%\begin{solution}
+%	Write your answer here.
+%	\begin{description}
+%		\item[(a)] Answer to first part
+%		\item[(b)] Answer to second part
+%	\end{description}
+%\end{solution}	
+
+\question[10] (\textbf{Closure properties of $\Sigma_n, \Pi_n$}). Fix any $i \ge 1$. Show that $\Sigma_i$ as well as $\Pi_i$ are closed under intersection and union.
+	%%	 %Uncomment the following to answer
+	%	\begin{solution}
+		%		Write your answer here.
+		%	\end{solution}
+		
+	
+	\begin{solution}
+		\include{./q3/q3}
+	\end{solution}
+	
+\question [20] (\textbf{Rice's theorem}) Identify if the following are (0) properties of SD languages, (1) non-trivial properties and (2) non-monotone properties. If (1) / (2) is true, apply Rice's theorems suitably and give your conclusions. A direct use of diagonalisation or reductions does not fetch any credit.
+
+\begin{parts}
+	\part[4] given a Turing machine $M$, $L(M)$ is not regular ?
+	\part[4] given a Turing machine $M$, does there exist a non-empty regular set $L'$ such that $L' \subseteq L(M)$ ?
+	\part[4] given $M$, does $M$ represent a DFA that accepts some string with equal number of $0$s and $1$s ?
+	\part[4] given a Turing machine $M$, is $L(M) \in \Pi_{42}$ ?
+\end{parts}
+
+% Uncomment the following to answer
+%\begin{solution}
+%	Write your answer here.
+%	\begin{description}
+	%		\item[(a)] Answer to first part
+	%		\item[(b)] Answer to second part
+	%	\end{description}
+%\end{solution}	
+
+\begin{solution}
+	\begin{enumerate}
+		\item[(a)] \include{./q4/q4a}
+		\item[(b)] \include{./q4/q4b}
+		\item[(c)] \include{./q4/q4c}
+		\item[(d)] \include{./q4/q4d}
+	\end{enumerate}
+\end{solution}
+
+
+\end{questions}
+
+\end{document}
