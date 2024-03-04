@@ -1,0 +1,73 @@
+
+
+
+Let $L_1 = 0^*$ and $L_2 = 1^*0^*$
+
+Here, $L_1 \subseteq L_2$
+
+The reduction machine on input $x$, an instance of $L_2$ produces an instance $y$ of $L_1$
+
+To prove : $L_1 \lem L_2$
+
+Let $M_2$ be the total turing machine which accepts $L_2$, we know it exists, because $L_2$ is \textbf{regular}
+
+The reduction machine $M_\sigma$ Is
+
+``
+
+On input $x$
+\begin{enumerate}
+    \item Run $M_2$ on $x$
+    \item If $M_2$ accepts, output $0$
+    \item If $M_2$ rejects, output $1$
+\end{enumerate}
+
+''
+
+Now, we have to prove
+$x \in L_2 \Leftrightarrow M_\sigma(x) \in L_1$
+
+$x \in L_2$
+
+\imp
+$M_2$ accepts $x$
+
+\imp
+$M_\sigma$ outputs $0$ which is in $L_1$
+
+\imp
+$0 \in L_1$
+
+\imp
+$M_\sigma(x) \in L_1$
+
+
+$x \notin L_2$
+
+\imp
+$M_2$ rejects $x$, since $M_2$ is total
+
+\imp
+$M_\sigma(x) = 1$ which is not in $L_1$
+
+\imp
+$M_\sigma(x) \notin L_1$
+
+
+Hence given $L_1 = 0^*$ and $L_2 = 1^*0^*$ such that $L_1 \subseteq L_2$ and $L_2 \lem L_1$
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

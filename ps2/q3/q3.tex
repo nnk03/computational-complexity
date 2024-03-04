@@ -1,0 +1,107 @@
+
+
+Suppose $\calp$ is non-trivial and $\calp(\phi) = 1$, we want to prove that $\calp$ is undecidable
+
+Assume $\calp$ is decidable, and $M$ be the total turing machine accepting $\calp$
+
+Since $\calp$ is decidable, $\overline{\calp}$ has to be decidable, hence if $\calp(\phi) = 1$, then $\overline{\calp}(\phi) = 0$ and $\overline{\calp}$ is also non-trivial
+
+Now, $\exists L_1$ such that $\overline{\calp}(L_1) = 1$ and $L_1$ will not be $\phi$ since $\overline{\calp}(\phi) = 0$. Let $M_1$ be a machine accepting $L_1$ (existence of $M_1$ is guaranteed since $L_1$ is semi-decidable)
+
+
+We will prove that ${\HP} \lem \calpc$
+
+Let the reduction algorithm on input $\la M, x \ra$, an instance of ${\HP}$ output $M'$, an instance of $\calpc$
+
+Description of $M'$ is as follows
+
+$M'$ = 
+
+``
+
+On input $y$,
+\begin{enumerate}
+    \item Run $M$ on $x$
+    \item If $M$ halts on $x$
+        \begin{enumerate}
+            \item Run $M_1$ on $y$
+            \item If $M_1$ accepts, accept
+            \item If $M_1$ rejects, reject
+        \end{enumerate}
+\end{enumerate}
+
+''
+
+We want to prove that $\la M, x\ra \in {\HP} \Leftrightarrow M' \in \calpc$
+
+
+$\la M, x \ra \in {\HP}$
+
+\imp
+$M \text{ halts on } x$
+
+\imp
+$M'$ accepts $y$ only if $M_1$ accepts $y$
+
+\imp
+$L(M') = L(M_1)$
+
+\imp
+$\calpc(L(M')) = \calpc(L(M_1)) = 1$
+
+\imp
+$M' \in \calpc$
+
+
+
+
+
+
+
+
+$\la M, x \ra \notin {\HP}$
+
+\imp
+$M \text{ does not halt on } x$
+
+\imp
+$M'$ loops on every input $y$
+
+\imp
+$L(M') = \phi$
+
+\imp
+$\calpc(L(M')) = \calpc(\phi) = 0$
+
+\imp
+$M' \notin \calpc$
+
+
+
+Hence we have proved that ${\HP} \lem \calpc$ \imp $\overline{\HP} \lem \calp$
+
+Therefore, since $\overline{HP}$ is undecidable, $\calp$ is also undecidable
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,114 @@
+
+
+Let us construct a turing machine $M'$ for which $$L(M') = \{{
+    M \mid M \text{ halts on all inputs of length less than 42}
+}\}$$
+
+$M'$ = ``
+
+On input $M$,
+\begin{enumerate}
+    \item[(1)] For each $x \in \Sigma^*, |x| < 42$, Run $M$ on $x$
+    \item[(2)] Accept $M$ 
+\end{enumerate}
+
+''
+
+$M \in L$
+
+\imp
+$M$ halts on all inputs of length less than $42$
+
+\imp
+step (1) of $M$ terminates and reaches step (2)
+
+\imp
+$M'$ accepts $M$
+
+\imp
+$M \in L(M')$
+
+
+$M \notin L$
+
+\imp
+$M$ loops on some input of length less than 42
+
+\imp
+step (1) of $M'$ loops when it reaches such an $x$
+
+\imp
+$M'$ loops
+
+\imp
+$M'$ does not accept $M$
+
+\imp
+$M \notin L(M')$
+
+Hence $L(M') = L$
+
+Suppose complement of $L$ is also recursively enumberable, then $L$ would be decidable since we know 
+$$
+L \text{ is decidable} \Leftrightarrow L \text{is r.e and $\ovl{L}$ is r.e}
+$$
+
+we will show a reduction $\HP \lem L$
+
+The reduction machine $\sigma$ on input $M\#x$ (an instance of $\HP$) outputs $M'$ an instance of $L$
+
+$M'$ = ``
+
+On input $y$,
+\begin{enumerate}
+    \item Run $M$ on $x$
+    \item If $M$ halts on $x$, accept $y$
+\end{enumerate}
+
+''
+
+we need to prove
+
+$M\#x \in \HP \Leftrightarrow M' \in L $
+
+$M\#x \in \HP$
+
+\imp
+$M$ halts on $x$
+
+\imp
+$M'$ accepts all $y$, hence $M'$ halts on all inputs of length less than 42
+
+\imp
+$M' \in L$
+
+$M\#x \notin \HP$
+
+\imp
+$M$ loops on $x$
+
+\imp
+$M'$ loops on all $y$, hence $M'$ halts on some inputs of length less than 42
+
+\imp
+$M' \notin L$
+
+
+therefore $M\#x \in \HP \Leftrightarrow M' \in L $
+
+Since we know $\HP$ is undecidable, $L$ is also undecidable, and thus $\ovl{L}$ is not r.e
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

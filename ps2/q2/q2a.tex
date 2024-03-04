@@ -1,0 +1,73 @@
+
+We know that for all $L_1 ,L_2 \in$ decidable languages, $L_1 \lem L_2$
+
+Nevertheless, for this question, let $L_1 = 0^*$ and $L_2 = 1^*0^*$
+
+Here, $L_1 \subseteq L_2$
+
+The reduction machine on input $x$, an instance of $L_1$ produces an instance $y$ of $L_2$
+
+To prove : $L_2 \lem L_1$
+
+Let $M_1$ be the total turing machine which accepts $L_1$, we know it exists, because $L_1$ is \textbf{regular}
+
+The reduction machine $M_\sigma$ Is
+
+``
+
+On input $x$
+\begin{enumerate}
+    \item Run $M_1$ on $x$
+    \item If $M_1$ accepts, output $10$
+    \item If $M_1$ rejects, output $01$
+\end{enumerate}
+
+''
+
+Now, we have to prove
+$x \in L_1 \Leftrightarrow M_\sigma(x) \in L_2$
+
+$x \in L_1$
+
+\imp
+$M_1$ accepts $x$
+
+\imp
+$M_\sigma$ outputs $10$ which is in $L_2$
+
+\imp
+$10 \in L_2$
+
+\imp
+$M_\sigma(x) \in L_2$
+
+
+$x \notin L_1$
+
+\imp
+$M_1$ rejects $x$, since $M_1$ is total
+
+\imp
+$M_\sigma(x) = 10$ which is not in $L_2$
+
+\imp
+$M_\sigma(x) \notin L_2$
+
+
+Hence given $L_1 = 0^*$ and $L_2 = 1^*0^*$ such that $L_1 \subseteq L_2$ and $L_1 \lem L_2$
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

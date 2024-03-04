@@ -1,0 +1,77 @@
+
+Suffices to prove :
+\begin{enumerate}
+    \item[(i)] $\D^A \subseteq \SD^A \cap co\SD^A$
+    \item[(ii)] $\D^A \supseteq \SD^A \cap co\SD^A$
+\end{enumerate}
+
+\begin{enumerate}
+    \item 
+Let $L \in \D^A$,
+by definition of $D^A$, $L$ is decidable in $A$, let the total T.M be $M^A$
+
+$L$ is decidable in $A$
+
+\imp
+$L$ is r.e in $A$
+
+\imp
+$L \in \SD^A$
+
+to prove $\ovl{L} \in \SD^A$, we need to construct a T.M $N^A$ such that $L(N^A) = \ovl{L}$
+
+
+$N^A$ = ``
+
+On input $x$,
+\begin{enumerate}
+    \item Run $M^A$ on $x$, (using the oracle $A$ to answer queries of the form $x \in A ?$)
+    \item If $M^A$ accepts, reject
+    \item If $M^A$ rejects, accept
+\end{enumerate}
+
+''
+
+The above machine is total since every step is total including the step (i) since $M^A$ is total
+
+$x \in \ovl{L}$
+
+\doubleimp
+$x \notin L$
+
+\doubleimp
+$M^A$ rejects $x$
+
+\doubleimp
+$N^A$ accepts $x$
+
+\doubleimp
+$x \in L(N^A)$
+
+Hence $L(N^A) = \ovl{L}$
+
+and thus $\ovl{L}$ is decidable in $A$
+
+\imp
+$\ovl{L}$ is r.e in $A$
+
+\imp
+$\ovl{L} \in \SD^A$
+
+\imp
+$L \in \coSD^A$
+
+and hence proved that $L \in \D^A$ \imp $L \in \SD^A \cap \coSD^A$
+
+\imp
+$\D^A \subseteq \sd^A \cap \cosd^A$
+
+
+
+
+\end{enumerate}
+
+
+
+
+

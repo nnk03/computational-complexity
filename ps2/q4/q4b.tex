@@ -1,0 +1,224 @@
+\begin{enumerate}
+\item We will show that if $\TOTAL$ is decidable, then $\overline{\HP}$ is decidable i.e $\overline{HP} \lem \TOTAL$
+
+The reduction algorithm, on input $\la M, x \ra$ an instance of $\overline{\HP}$ outputs, $M'$ an instance of $\TOTAL$
+
+$M'$ = 
+
+``
+
+On input $y$,
+    \begin{enumerate}
+        \item Run $M$ on $x$
+        \item \begin{enumerate}
+            \item If $M$ halts on $x$ in $|y| + 1$ steps, loop
+            \item Else halt and accept
+        \end{enumerate}
+    \end{enumerate}
+
+''
+
+To prove : $\la M, x \ra \in \overline{\HP} \Leftrightarrow M' \in \TOTAL$
+
+$\la M, x \ra \in \overline{\HP}$
+
+\imp
+$M$ never halts on $x$
+
+\imp
+$\forall y \in \Sigma^*$, $M$ will not halt on $x$ in $|y| + 1$ steps
+
+\imp
+$M'$ will accept all $y$
+
+\imp
+$M'$ halts on all inputs
+
+\imp
+$M' \in \TOTAL$
+
+$\la M, x \ra \notin \overline{\HP}$
+
+\imp
+$M$ halts on $x$ in less than $c + 1$ steps for some $c \ge 0$
+
+\imp
+$\forall y \in \Sigma^*, |y| < c + 1$, $M'$ will loop on $y$
+(the reason for $|y| + 1$ in the algorithm, is because, then it guarantees, that $M'$ will loop on atleast the string $\epsilon$, so that it satisfies the condition of $\overline{\TOTAL}$)
+
+\imp
+$M' \notin \TOTAL$
+
+
+Hence $\overline{HP} \lem \TOTAL$, and hence $\TOTAL$ is not semi-decidable
+
+
+\item We will show $\HP \lem \TOTAL$ which will imply $\overline{\HP} \lem \overline{\TOTAL}$
+
+
+The reduction machine on input, $\la M, x \ra$, an instance of $\HP$, outputs $M'$, an instance of $\TOTAL$
+
+$M'$ =
+
+``
+
+On input $y$
+\begin{enumerate}
+    \item Run $M$ on $x$
+    \item \begin{enumerate}
+        \item If $M$ halts on $x$, accept
+    \end{enumerate}
+\end{enumerate}
+
+''
+
+To prove : $\la M, x \ra \in \HP \Leftrightarrow M' \in \TOTAL$
+
+$\la M, x \ra \in \HP$
+
+\imp
+$M$ halts on $x$
+
+\imp
+$M'$ halts and accepts every input
+
+\imp
+$M' \in \TOTAL$
+
+$\la M, x \ra \notin \HP$
+
+\imp
+$M$ loops on $x$
+
+\imp
+$M'$ loops on every input 
+
+\imp
+$M' \notin \TOTAL$
+
+Hence proved that $\HP \lem \TOTAL$ which implies 
+
+$\overline{HP} \lem \overline{\TOTAL}$
+
+
+
+
+
+
+
+\end{enumerate}    
+
+    % \item We will show that, if $\TOTAL$ is decidable, then $\FIN$ is decidable
+    
+    % i.e ${\FIN} \lem \TOTAL$
+    
+    % The reduction algorithm on input $M$, an instance of $\FIN$ outputs $M'$ an instance of $\TOTAL$
+    
+    % $M'$ = 
+
+    % ``
+    
+    % On input $y$
+    % \begin{enumerate}
+    %     \item Run $M$ on $x$
+    %     \item If $M$ halts in $|y|$ steps, halt and accept
+    %     \item else, loop
+    % \end{enumerate}
+    
+    % ''
+
+    % Now, we need to prove $M \in \FIN \Leftrightarrow M' \in \TOTAL$
+
+    % $M  \in \FIN$
+
+    % \imp
+    % $M$ halts on $x$, in $c$ steps for some $c \in \N$
+    
+    % \imp
+    % $\forall y \in \Sigma^* \text{ such that } |y| < c$, $M'$ loops on $y$ and
+    % $\forall y \in \Sigma^* \text { such that } |y| \geq c$, $M'$ accepts $y$
+
+    % \imp
+
+
+
+
+
+
+
+
+
+
+    % \item[(1)]
+
+%     First, let us prove that $\TOTAL$ is a property of language
+    
+%     For all turing machines $M_1, M_2$ such that $L(M_1) = L(M_2)$, 
+
+
+
+
+% Let us argue that the property is non-monotone
+
+% Before that, let us define what is the property here
+
+% Property $\calp$ of a set of semi-decidable languages $L$ is that
+
+% $\calp(L) = 1 \Leftrightarrow \forall M$ such that $L(M) = L$, $M$ halts on all inputs
+
+% Therefore $\TOTAL$ is basically the set of all machines which are total or in other words, the property $\calp$ is true for all decidable languages
+
+% We know that $\phi$ is decidable and $HP$ is undecidable and $\phi \subseteq HP$
+
+% but $\calp(\phi) = 1$ and $\calp(HP) = 0$ which proves that property $\calp$ is non-monotone
+
+% Hence $\TOTAL$ is not semi-decidable by Rice Theorem 2
+
+% \item[(2)] Similarly, here, $\overline{\TOTAL}$ is the set of all turing machines which are not total
+
+% % For languages which are semi-decidable but not decidable, this is trivial because, if there existed a total turing machine, the language would have been in the set of decidable languages. Hence every turing machine accepting the language would have to be non-total.
+
+
+% % For every language $L$ which is decidable, we can construct a turing machine $M'$ such that $L(M') = L$ and $M' is not total$
+
+% % THE ABOVE PROOF IN COMMENTS IS WRONG
+
+% $\overline{\TOTAL}$ is also non-monotone, because let $L_1 = \phi$ and $L_2 = \Sigma^*$
+
+
+% $L_1 \subseteq L_2$ and $L_1$ has a turing machine $M_1$ which is not total 
+
+% $M_1$ =
+
+% ``
+
+% On input $x$, loop
+
+% ''
+
+% Since this machine loops on every input, $L(M_1) = \phi = L_1$
+
+% But for $L_2 = \Sigma^*$ every machine $M_2$ which accepts $\Sigma^*$ has to be total because, if at all $M_2$ loops on a particular input, say $x$, it will not accept that input $x$, and hence $x \not \in L(M_2)$ but $L(M_2) = \Sigma^*$ which is a contradiction
+
+% Hence $\calp(L_1) = \calp(\phi) = 1$ but $\calp(L_2) = \calp(\Sigma^*) = 0$, and $L_1 \subseteq L_2$
+
+% Hence $\overline{\TOTAL}$ is also 
+% not semi-decidable by Rice Theorem 2
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

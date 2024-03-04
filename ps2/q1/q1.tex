@@ -1,0 +1,117 @@
+\begin{enumerate}
+    \item To prove $\le_m$ is reflexive :
+    
+    Let $L$ be a language, we have to prove $L \le_m L$. Let $M$ be a turing machine which accepts $L$
+
+    Now we have to prove that if $L$ is decidable, then $L$ is decidable, which is trivial
+
+    \item To prove $\le_m$ is transitive : 
+    
+    Let $L_1, L_2, L_3$ be 3 languages such that $L_1 \le_m L_2$ and $L_2 \le_m L_3$, we have to prove that $L_1 \lem L_3$ 
+
+    Let $M_{12}$ be the reduction machine which converts an instance $x$ of $L_1$ to an equivalent instance $y$ of $L_2$ and $M_{23}$ be the reduction machine which converts an instance $y$ of $L_2$ to an equivalent instance $z$ of $L_3$ (by definition of reduction machines both $M_{12}$ and $M_{23}$ are total)
+
+    We will construct a reduction machine $M_{13}$ which converts an instance $x$ of $L_1$ to an equivalent instance $z$ of $L_3$
+
+    $M_{13}$ =
+
+    ``
+    
+    On input $x$,
+        \begin{enumerate}
+            \item[(a)] Run $M_{12}$ on $x$ and let $y$ denote the output
+            \item[(b)] Run $M_{23}$ on $y$ and let $z$ denote the output
+            \item[(c)] Return $z$
+        \end{enumerate}
+    
+    ''
+
+    This machine $M_{13}$ is total since both $M_{12}$ and $M_{23}$ are total 
+
+    Let $M_3$ be a turing machine which accepts $L_3$
+
+    Now to prove $x \in L_1 \Leftrightarrow z \in L_3$
+
+    $x \in L_1 \Leftrightarrow y \in L_2$ since $M_{12}$ converts instance $x$ of $L_1$ to an equivalent instance $y$ of $L_2$
+
+    and
+
+    $y \in L_2 \Leftrightarrow y \in L_3$ since $M_{23}$ converts instance $y$ of $L_2$ to an equivalent instance $z$ of $L_3$
+
+    Hence
+
+    $x \in L_1 \Leftrightarrow z \in L_3$
+
+    Therefore the machine $M_{13}$ converts an instance $x$ of $L_1$ to an equivalent instance $z$ of $L_3$. Hence this is the required reduction machine
+    
+    \item 
+    $\lem$ is not symmetric
+    
+    Example : Let $L = 0^*$, we know that $L$ is decidable, Let $M$ be the total turing machine which accepts $L$
+
+    We also know that $HP \not \lem L$, since then it would be the case that $HP$ is decidable which is not the case
+
+    To prove $L \lem HP$
+
+    Let the reduction machine be $M_\sigma$ which on input $x$ outputs $\la M', x \ra $ where desciption of $M'$ is as follows
+
+    $M'$ = 
+
+    ``
+    
+    On input $y$,
+        \begin{enumerate}
+            \item[(a)] Run $M$ on $x$
+            \item[(b)] If $M$ accepts, halt and accepts
+            \item[(c)] If $M$ rejects, loop
+        \end{enumerate}
+    
+    ''
+
+    we will prove that $x \in L \Leftrightarrow y \in HP$
+
+    $x \in L$
+
+    \imp
+    $M$ accepts $x$
+
+    \imp
+    $M'$ halts on every input $y$, in particular $x$
+
+    \imp
+    $\la M' , x \ra \in HP$
+
+    $x \notin L$
+
+    \imp
+    $M$ will reject every input $x$ (since $M$ is total)
+
+    \imp
+    $M'$ will loop on every input $y$, in particular $x$
+
+    \imp
+    $\la M', x \ra \notin HP$
+
+    Hence we have showed two languages $L$ and $HP$ such that 
+    
+    $L \lem HP$ but $HP \not \lem L$
+
+    Therefore, $\lem$ is not symmetric
+
+
+
+
+
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+
+
+
