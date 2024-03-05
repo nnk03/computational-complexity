@@ -1,0 +1,37 @@
+
+$
+L = \{
+    M \mid L(M) \text{ is not regular}
+\}
+$
+
+is a property of SD language
+
+If there are 2 machines $M_1$ and $M_2$ accepting the same language, then it cannot be the case that $L(M_1)$ is regular and $L(M_2)$ is not regular
+
+This is non trivial since there are turing machines which accept regular languages and turing machines which accept non-regular languages
+
+This is also non-monotone since, there exists $L_1, L_2$ such that $L_1 \subseteq L_2$ and $\calp(L_1) = 1$ and 
+$\calp(L_2) = 0$
+
+$L_2 = \Sigma^* $ and $L_1 = \{
+    0^n1^n \mid n \geq 0
+\}$
+
+here $L_1$ is not regular which satisfies the property whereas $L_2$ is regular and a strict superset of $L_1$ which does not satisfy the property
+
+Since the property is non-trivial, by Rice's Theorem 1, $L$ is not decidable
+
+Since the property is non-monotone, by Rice's Theorem 2,
+$L$ is not semi-decidable
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,52 @@
+$
+L = \{
+    M \mid \exists L' \subseteq \Sigma^*, L' \not = \phi \text{ and}
+    L' \subseteq L(M)
+\}
+$
+
+This is equivalent to saying 
+$
+L = \{
+    M \mid L(M) \text{ is not empty}
+\}
+$
+because
+
+$L(M)$ is not empty
+
+\imp
+$\exists L' \subseteq L(M)$ which is $L(M)$ itself, such that $L' \subseteq L(M)$ i.e $L' = L(M)$
+
+$
+\exists L' \subseteq \Sigma^*, L' \not = \phi \text{ and}
+    L' \subseteq L(M)
+    $
+
+\imp
+$L(M)$ is not empty
+
+$L(M)$ is not empty is a property of SD languages since
+if there exists 2 machines $M_1$ and $M_2$ accepting the same language, it cannot be the case that 
+
+$L(M_1) = \phi$ and $L(M_2) \not = \phi$ or vice-versa
+
+
+This is a non-trivial property, since there are turing machines accepting empty languages and there are turing machines accepting non-empty languages
+
+This is a monotone property because
+
+$\forall L_1, L_2 \in \Sigma^*, \calp(L_1) = 1 \Rightarrow \calp(L_2) = 1$
+
+because if $L_1$ is non-empty, any superset of $L_1$ will be non-empty
+
+Since, this property is non-trivial, by Rice's theorem 1, the given language is undecidable
+
+We cannot conclude anything about semi-decidability from Rice's Theorem 2 because the language is not non-monotone
+
+
+
+
+
+
+

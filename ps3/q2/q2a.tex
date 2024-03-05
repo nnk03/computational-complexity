@@ -6,70 +6,138 @@ Suffices to prove :
 \end{enumerate}
 
 \begin{enumerate}
-    \item 
-Let $L \in \D^A$,
-by definition of $D^A$, $L$ is decidable in $A$, let the total T.M be $M^A$
+    \item
+    Let $L \in \D^A$,
+    by definition of $D^A$, $L$ is decidable in $A$, let the total T.M be $M^A$
+    
+    $L$ is decidable in $A$
+    
+    \imp
+    $L$ is r.e in $A$
+    
+    \imp
+    $L \in \SD^A$
+    
+    to prove $\ovl{L} \in \SD^A$, we need to construct a T.M $N^A$ such that $L(N^A) = \ovl{L}$
+    
+    
+    $N^A$ = ``
+    
+    On input $x$,
+    \begin{enumerate}
+        \item Run $M^A$ on $x$, (using the oracle $A$ to answer queries of the form $x \in A ?$)
+        \item If $M^A$ accepts, reject
+        \item If $M^A$ rejects, accept
+    \end{enumerate}
+    
+    ''
+    
+    The above machine is total since every step is total including the step (i) since $M^A$ is total
+    
+    $x \in \ovl{L}$
+    
+    $\Leftrightarrow$
+    $x \notin L$
+    
+    $\Leftrightarrow$
+    $M^A$ rejects $x$
+    
+    $\Leftrightarrow$
+    $N^A$ accepts $x$
+    
+    $\Leftrightarrow$
+    $x \in L(N^A)$
+    
+    Hence $L(N^A) = \ovl{L}$
+    
+    and thus $\ovl{L}$ is decidable in $A$
+    
+    $\Rightarrow$
+    $\ovl{L}$ is r.e in $A$
+    
+    $\Rightarrow$
+    $\ovl{L} \in \SD^A$
+    
+    $\Rightarrow$
+    $L \in \coSD^A$
+    
+    and hence proved that $L \in \D^A$ $\Rightarrow$ $L \in \SD^A \cap \coSD^A$
+    
+    $\Rightarrow$
+    $\D^A \subseteq \sd^A \cap \cosd^A$
+    
+    
+\item
 
-$L$ is decidable in $A$
+Let $L \in \sd^A \cap \cosd^A$
 
 \imp
-$L$ is r.e in $A$
+$L \in \sd^A$ and $\ovl{L} \in \sd^A$
 
 \imp
-$L \in \SD^A$
+there exists an OTM $N_1^A$ accepting $L$ and and also $N_2^A$ accepting $\ovl{L}$
 
-to prove $\ovl{L} \in \SD^A$, we need to construct a T.M $N^A$ such that $L(N^A) = \ovl{L}$
+now let us construct an OTM $N^A$ such that it accepts $L$ and is total
 
-
-$N^A$ = ``
+$N^A$ = 
+``
 
 On input $x$,
 \begin{enumerate}
-    \item Run $M^A$ on $x$, (using the oracle $A$ to answer queries of the form $x \in A ?$)
-    \item If $M^A$ accepts, reject
-    \item If $M^A$ rejects, accept
+    \item Run $N_1^A$ and $N_2^A$ on $x$ with time sharing, and also whenever a query of the form $x \in A$ is made, use the oracle $A$
+    \item If $N_1^A$ accepts, accept
+    \item If $N_2^A$ accepts, reject
 \end{enumerate}
 
 ''
 
-The above machine is total since every step is total including the step (i) since $M^A$ is total
+$\forall x \in \Sigma^*, x \in L \lor x \in \ovl{L}$ but not both
 
-$x \in \ovl{L}$
+\imp
+either $N_1^A$ accepts $x$ or $N_2^A$ accepts $x$
 
-\doubleimp
-$x \notin L$
 
-\doubleimp
-$M^A$ rejects $x$
+Since for each input, one of the machines is guaranteed to accept, the machine $N^A$ halts on all inputs and hence is total
 
-\doubleimp
+To prove $L(N^A) = L$
+
+$x \in L$
+
+\imp
+$N_1^A$ accepts $x$
+
+\imp
 $N^A$ accepts $x$
 
-\doubleimp
+\imp
 $x \in L(N^A)$
 
-Hence $L(N^A) = \ovl{L}$
-
-and thus $\ovl{L}$ is decidable in $A$
+$x \notin L$
 
 \imp
-$\ovl{L}$ is r.e in $A$
+$x \in \ovl{L}$
 
 \imp
-$\ovl{L} \in \SD^A$
+$N_2^A$ accepts $x$
 
 \imp
-$L \in \coSD^A$
-
-and hence proved that $L \in \D^A$ \imp $L \in \SD^A \cap \coSD^A$
+$N^A$ rejects $x$
 
 \imp
-$\D^A \subseteq \sd^A \cap \cosd^A$
+$x \notin L(N^A)$
+
+
+Therefore $L = L(N^A)$ and hence proved that
+$\sd^A \cap \cosd^A \subseteq \D^A$
+
 
 
 
 
 \end{enumerate}
+
+
+Hence $D^A = \sd^A \cap \cosd^A$
 
 
 
