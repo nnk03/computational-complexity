@@ -1,0 +1,73 @@
+
+To prove :
+\[
+    \di{i} = \{
+        L \mid \exists A \in \s{i - 1} \text{ such that $L$ is decidable in $A$}
+    \}
+\]
+
+or
+
+\[
+    \s{i} \cap \pii{i} = \{
+        L \mid \exists A \in \s{i - 1} \text{ such that $L$ is decidable in $A$}
+    \}
+\]
+
+Let $L$ be such that $\exists A \in \s{i - 1}$ such that $L$ is decidable in $A$
+
+\imp
+$
+L \in \{
+    L \mid \exists A \in \s{i - 1} \text{ such that $L$ is decidable in $A$}
+\}
+$
+
+\imp
+$L$ is semidecidable in $A$, (decidable languages are trivially semidecidable)
+
+\imp
+$L \in \s{i}$
+
+From the previous question we proved that $D^A = \sd^A \cap \cosd^A$
+
+\imp
+Since $L$ is decidable in $A$, both $L$ and $\ovl{L}$ are semidecidable in $A$
+
+\imp
+$L \in \pii{i}$
+
+hence $L \in \s{i}$ and $L \in \pii{i}$
+
+\imp
+$L \in \s{i} \cap \pii{i}$
+
+
+Now let $L \in \s{i} \cap \pii{i}$, we have to prove that $L \in \di{i}$
+
+
+$L \in \s{i}$
+
+\imp
+$\exists A \in \s{i - 1}$ such that $L$ is semidecidable in $A$
+
+\imp
+$\exists$ an OTM $N^A$ accepting $L$
+
+$L \in \pii{i}$
+
+\imp
+$\exists B \in \s{i - 1}$ such that $\ovl{L}$ is semidecidable in $B$
+
+\imp
+$\exists$ an OTM $N^B$ accepting $\ovl{L}$
+
+% not yet complete
+
+
+
+
+
+
+
+

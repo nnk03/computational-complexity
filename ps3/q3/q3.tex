@@ -14,7 +14,7 @@ $\s{i}$ closed under union
 $\forall L_1, L_2 \in \s{i}, L_1 \cup L_2 \in \s{i}$
 
 \imp
-$\forall L_1, L_2 \in \s{i}, \ovl{(\ovl{L_1} \cap \ovl{L_2})} \in \s{i}$, by De Morgan's Leftrightarrow
+$\forall L_1, L_2 \in \s{i}, \ovl{(\ovl{L_1} \cap \ovl{L_2})} \in \s{i}$, by De Morgan's Law
 
 \imp
 $\forall \ovl{L_1}, \ovl{L_2} \in \pii{i}, {(\ovl{L_1} \cap \ovl{L_2})} \in \pii{i}$
@@ -34,7 +34,7 @@ $\s{i}$ closed under intersection
 $\forall L_1, L_2 \in \s{i}, L_1 \cap L_2 \in \s{i}$
 
 \imp
-$\forall L_1, L_2 \in \s{i}, \ovl{(\ovl{L_1} \cup \ovl{L_2})} \in \s{i}$, by De Morgan's Leftrightarrow
+$\forall L_1, L_2 \in \s{i}, \ovl{(\ovl{L_1} \cup \ovl{L_2})} \in \s{i}$, by De Morgan's Law
 
 \imp
 $\forall \ovl{L_1}, \ovl{L_2} \in \pii{i}, {(\ovl{L_1} \cup \ovl{L_2})} \in \pii{i}$
@@ -45,14 +45,96 @@ $\forall L_1', L_2' \in \pii{i}, {(L_1' \cup L_2')} \in \pii{i}$
 \imp
 $\pii{i}$ closed under union
 
-
 Suffices to prove
 
 $\s{i}$ is closed under intersection and union
 
+We'll argue using induction
+
+\textbf{Base case} : $i = 0$
+$\s{0} = \Delta_0 = \Delta_1$ which is the set of decidable languages and we already know that decidable languages are closed under union and intersection
+
+\textbf{Strong Induction Hypothesis}
+The below statement is true for all $i \leq n$
+$$
+\s{i} \text{ is closed under intersection and union}
+$$
+The below statement also follows from Claim 1 and claim 2
+$$
+\pii{i} \text{ is closed under intersection and union}
+$$
+
+Therefore we can consider both statements as Strong induction Hypothesis
+
+\textbf{To prove for $i = n + 1$}
+
+Let $L_1, L_2 \in \s{n + 1}$
+
+\imp
+$\exists A \in \pii{n}, A \subseteq \Sigma^* \times \Sigma^*, x \in L_1 \Leftrightarrow \exists y_1, (x, y_1) \in A$ and
+
+$\exists B \in \pii{n}, B \subseteq \Sigma^* \times \Sigma^*, x \in L_2 \Leftrightarrow \exists y_2, (x, y_2) \in B$
+
+% \imp
+% $\exists N^{\ovl{A}}$ accepting $L_1$ and 
+% $\exists N^{\ovl{B}}$ accepting $L_2$
+
+\imp
+$\exists (A \cup B) \in \pii{n}$ (by induction hypothesis) such that 
+
+$
+x \in L_1 \cup L_2 \Leftrightarrow \exists y, (x, y) \in (A \cup B)$
+
+\imp
+$L_1 \cup L_2 \in \pii{n + 1}$
+
+and thus proved $\s{n + 1}$ is closed under union which proves $\pii{n + 1}$ is closed under intersection from the claims
+
+Let $L_1, L_2 \in \s{n + 1}$
+
+\imp
+$\exists A \in \pii{n}, A \subseteq \Sigma^* \times \Sigma^*, x \in L_1 \Leftrightarrow \exists y_1, (x, y_1) \in A$ and
+
+$\exists B \in \pii{n}, B \subseteq \Sigma^* \times \Sigma^*, x \in L_2 \Leftrightarrow \exists y_2, (x, y_2) \in B$
+
+% \imp
+% $\exists N^{\ovl{A}}$ accepting $L_1$ and 
+% $\exists N^{\ovl{B}}$ accepting $L_2$
+
+\imp
+$\exists (A \cap B) \in \pii{n}$ (by induction hypothesis) such that 
+
+$
+x \in L_1 \cap L_2 \Leftrightarrow \exists y, (x, y) \in (A \cap B)$
+
+\imp
+$L_1 \cap L_2 \in \pii{n + 1}$
 
 
-% not yet completed
+and thus proved $\s{n + 1}$ is closed under intersection which proves $\pii{n + 1}$ is closed under union from the claims
+
+therefore we have proved that if the statement holds for all $i \leq n$, it holds for $i = n + 1$
+
+and thus by principle of mathematical induction it is proved that 
+
+$$
+\forall i \in \N, \s{i} \text{ and } \pii{i} \text{ are closed under union and intersection}
+$$
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

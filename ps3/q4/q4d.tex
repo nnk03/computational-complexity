@@ -1,0 +1,36 @@
+
+The language is 
+
+$
+L = \{
+    M \mid L(M) \in \pii{42}
+\}
+$
+
+This is a property of language since it cannot be the case that there exists $M_1, M_2$ accepting the same language but $L(M_1) \in \pii{42}$ and $L(M_2) \notin \pii{42}$ or vice-versa
+
+This is non-trivial because there exists turing machines accepting $L \in \pii{42}$ and turing machines accepting languages $L \notin \pii{42}$
+
+Hence this is undecidable by Rice's Theorem 1
+
+This is also non-monotone because, let $L_1 \in \pii{42}$ and 
+$L_2 \in \pii{43} \setminus \pii{42}$ 
+
+$\calp(L_1) = 1$ and $\calp(L_1 \cup L_2) = 0$ since union of $L_1$ and $L_2$ cannot be in $\pii{42}$ since $L_2$ is in $\pii{43} \setminus \pii{42}$
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
