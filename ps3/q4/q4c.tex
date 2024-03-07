@@ -1,7 +1,32 @@
 The language is 
 
+$$
+L = \{
+    M \mid \exists x \in \Sigma^*, \text{ DFA($M$) } \land
+    (\#x(0) = \#x(1)) \land x \in L(M)
+\}
+$$
+
+This is a property of language, since if there are 2 turing machines $M_1$ and $M_2$ accepting the same language, it cannot be the case that one satisfies the property and other does not since if it satisfies, then the $x$ which satisfies the predicate will be present in the language 
+
+This is non-trivial because there exists turing machines which satisfy the property and those which do not
+
+The language is monotone because, suppose let $L_1$ satisfy the property, and let $L_2 \supseteq L_1$
+
+Let the string which satisfies the predicate be $x^*$
+
+$x^* \in L_1$
+
+\imp
+$x^* \in L_2$ since $L_1 \subseteq L_2$
+
+\imp
+$L_2$ satisfies the property
 
 
+Thus, if a set satisfies the property, then any superset of that set would also satisfy the property, Hence it is monotone
+
+Therefore, by Rice's Theorem 1, the language $L$ is undecidable, but we cannot conclude anything about semi-decidability from Rice's theorem 2 since it is not non-monotone
 
 
 
