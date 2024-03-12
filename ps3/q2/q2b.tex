@@ -62,6 +62,71 @@ $\exists B \in \s{i - 1}$ such that $\ovl{L}$ is semidecidable in $B$
 \imp
 $\exists$ an OTM $N^B$ accepting $\ovl{L}$
 
+Now let machine $M'$ be as follows
+
+$M'$ =
+``
+
+On input $x$,
+\begin{enumerate}
+    \item Run $N^A$ and $N^B$ on $x$ with time sharing, with using oracle $A$ for queries of type $x \in A$ and using oracle $B$ for queries of type $x \in B$
+    \item If $N^A$ accepts, accept
+    \item If $N^B$ accepts, reject
+\end{enumerate}
+
+''
+
+$M'$ is total because for all $x \in \Sigma^*$, $x \in L$ or $x \in \ovl{L}$
+
+\imp
+$x$ is accepted by $N^A$ or $x$ is accepted by $N^B$
+
+\imp
+$M'$ either accepts $x$ or $M'$ rejects $x$
+
+\imp
+$M'$ is total
+
+$L = L(M')$
+
+$x \in L$
+
+\imp
+$x \in L(N^A)$
+
+\imp
+$N^A$ accepts $x$
+
+\imp
+$M'$ accepts $x$
+
+
+$x \notin L$
+
+\imp
+$x \in \ovl{L}$
+
+\imp
+$x \in L(N^B)$
+
+\imp
+$N^B$ accepts $x$
+
+\imp
+$M'$ rejects $x$
+
+\imp
+$x \notin L(M')$
+
+
+
+Hence $L(M') = L$
+
+And thus we have showed that $L$ is decidable in $A$ and $B$
+
+Hence $L \in \Delta_i$
+
+
 % not yet complete
 
 
