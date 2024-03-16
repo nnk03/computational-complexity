@@ -1,0 +1,139 @@
+\documentclass[12pt, a4paper,answers]{exam}
+\usepackage{graphicx,fullpage,complexity}
+\usepackage{amsmath,amsthm,amssymb}
+\usepackage{xcolor}
+\definecolor{iitpkdcolor}{cmyk}{0,0.42,1,0} %iitpkd logo color
+\usepackage[normalem]{ulem}
+\renewcommand\ULthickness{2.0pt}   %%---> For changing thickness of underline
+\setlength\ULdepth{1.3ex}%\maxdimen ---> For changing depth of underline
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\HP}{\mathsf{HP}}
+\newcommand{\ALL}{\mathsf{ALL}}
+\newcommand{\TOTAL}{\mathsf{TOTAL}}
+\renewcommand{\D}{\mathcal{D}}
+\newcommand{\SD}{\mathcal{SD}}
+%\newcommand{\BP}{mathsf{BP}}
+%\newcommand{\}{def}
+\begin{document}
+	%\thispagestyle{empty}
+	\noindent
+	\begin{minipage}[l]{0.1\textwidth}
+		\noindent
+		\includegraphics[width=2.4\textwidth]{iitpkd}
+	\end{minipage}
+	\hfill
+	\begin{minipage}[c]{0.8\textwidth}
+		\begin{center}
+			{\large \textsc{\textcolor{iitpkdcolor}{Indian Institute of Technology Palakkad}} \par
+				\small	Department of Computer Science and Engineering	\par
+				\large	CS5616 Computational Complexity \par 
+				\small January -- May 2024}
+		\end{center}
+	\end{minipage}
+	\par
+\vspace{2mm}
+\hrule
+\vspace{2mm}
+\begin{minipage}{0.9\textwidth} 
+	\textsf{Problem Set} -- 4  \hfill  \textsf{Total Points} -- 50
+	
+	{\small \textsf{Name}: Your name    \hfill \small \textsf{Given on} 15 Mar}
+	
+	{\small \textsf{Roll no}: 11223344  \hfill \small \textsf{Due on} 5 Apr}
+\end{minipage}
+	\vspace{0.2in}
+\noindent
+
+\textbf{Instructions}
+\begin{itemize}   \setlength\itemsep{0.1mm}
+	\item {\sf  Use of resources other than class notes and references is forbidden.}
+	\item {\sf Collaboration is not allowed. Credit will be given for attempts and partial answers.}
+\end{itemize}
+
+
+\begin{questions}
+
+\question[10] [\textbf{Resource ?}]
+
+Consider the following definitions where $M$ is a valid Turing machine encoding and $x \in \Sigma^*$. We use $\bot$ for value being undefined. Check if the follows are a resource using Blum's axioms. In case they don't, give a formal argument. \\ (\textit{Hint}: Decidability of the policing language !)
+\begin{parts}
+	\part[5] (Head turns) 
+	
+	$h(M,x) = \begin{cases} 
+		\# \text{ turns that input head of $M$ makes on $x$ before halting} & \text{ $M$ halts on $x$} \\
+		\bot & \text{ otherwise}
+	\end{cases}$
+	\part[5] (Count) Let $q_0$ be a state in the finite control of $M$.
+	
+	$c(M,x) = \begin{cases} 
+		\# \text{ of times $M$ visits a state $q_0$ until it accepts or rejects} & \text{ $M$ halts on $x$} \\
+		\bot & \text{ otherwise}
+	\end{cases}$
+	
+\end{parts}
+
+% Uncomment the following to answer
+%\begin{solution}
+%	Write your answer here.
+%	\begin{description}
+%		\item[(a)] Answer to first part
+%		\item[(b)] Answer to second part
+%	\end{description}
+%\end{solution}	
+
+
+\question[10] [\textbf{Oblivious Turing machines}]
+
+A Turing machine $M$ is \textit{oblivious} if for every input $x \in \Sigma^*$ and every $i \in \N$, the location of $M's$ head at the $i^{th}$ step of execution is only a function of $|x|$ and $i$. In other words, the head movement does not depend on $x$. For a time constructible $t(n)$ show that if $L \in \DTIME(t(n))$, then there is a two tape oblivious Turing machine that decides $L$ in $O(t(n)^2)$ time.
+
+% Uncomment the following to answer
+%\begin{solution}
+%	Write your answer here.
+%	\begin{description}
+%		\item[(a)] Answer to first part
+%		\item[(b)] Answer to second part
+%	\end{description}
+%\end{solution}
+
+
+
+\question[15] [\textbf{More on crossing sequences}] 
+
+In class, we saw $o(\log \log n)$ space restricted Turing machines must be regular. Here, we show similar results for time restricted machines.
+\begin{parts}
+	\part [5] Show that there exists a non-regular language that can be accepted by a one tape $O(n\log n)$ time Turing machine.
+	\part [10] Show that any language accepted by a one tape deterministic Turing machine in time $o(n\log n)$ must be regular.
+\end{parts}
+
+% Uncomment the following to answer
+%\begin{solution}
+%	Write your answer here.
+%	\begin{description}
+%		\item[(a)] Answer to first part
+%		\item[(b)] Answer to second part
+%	\end{description}
+%\end{solution}
+
+
+
+\question[15]
+[\textbf{Definition of space}] 
+
+In this question, we explain why the definition of space complexity counts the cells that the machine scans and not just the ones that are written. Let $L = \{w \#w \mid w \in \{0,1\}^*\}$.
+\begin{parts}
+	\part[5] Show that $L \in \DSPACE(\log n)$.
+	\part[10] Show that there exists a non-determinisitic Turing machine that writes only on cell to the right of left end marker symbol of its worktape and accepts $\overline{L}$. The machine may scan any number of worktape cells without writing on them.
+\end{parts}
+
+%\begin{solution}
+%	Write your answer here.
+%	\begin{description}
+%		\item[(a)] Answer to first part
+%		\item[(b)] Answer to second part
+%	\end{description}
+%\end{solution}
+
+
+\end{questions}
+
+\end{document}
