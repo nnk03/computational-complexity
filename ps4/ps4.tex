@@ -4,6 +4,7 @@
 \usepackage{xcolor}
 \definecolor{iitpkdcolor}{cmyk}{0,0.42,1,0} %iitpkd logo color
 \usepackage[normalem]{ulem}
+\usepackage{import}
 \renewcommand\ULthickness{2.0pt}   %%---> For changing thickness of underline
 \setlength\ULdepth{1.3ex}%\maxdimen ---> For changing depth of underline
 \newcommand{\N}{\mathbb{N}}
@@ -37,9 +38,9 @@
 \begin{minipage}{0.9\textwidth} 
 	\textsf{Problem Set} -- 4  \hfill  \textsf{Total Points} -- 50
 	
-	{\small \textsf{Name}: Your name    \hfill \small \textsf{Given on} 15 Mar}
+	{\small \textsf{Name}: Neeraj Krishna N    \hfill \small \textsf{Given on} 15 Mar}
 	
-	{\small \textsf{Roll no}: 11223344  \hfill \small \textsf{Due on} 5 Apr}
+	{\small \textsf{Roll no}: 112101033  \hfill \small \textsf{Due on} 5 Apr}
 \end{minipage}
 	\vspace{0.2in}
 \noindent
@@ -71,6 +72,12 @@ Consider the following definitions where $M$ is a valid Turing machine encoding 
 	\end{cases}$
 	
 \end{parts}
+\begin{solution}
+    \begin{description}
+        \item[(a)] \import{./q1}{q1a.tex}
+        \item[(b)] \import{./q1}{q1b.tex}
+    \end{description}
+\end{solution}
 
 % Uncomment the following to answer
 %\begin{solution}
@@ -94,7 +101,9 @@ A Turing machine $M$ is \textit{oblivious} if for every input $x \in \Sigma^*$ a
 %		\item[(b)] Answer to second part
 %	\end{description}
 %\end{solution}
-
+\begin{solution}
+        \import{./q2}{q2.tex}
+\end{solution}
 
 
 \question[15] [\textbf{More on crossing sequences}] 
@@ -113,7 +122,12 @@ In class, we saw $o(\log \log n)$ space restricted Turing machines must be regul
 %		\item[(b)] Answer to second part
 %	\end{description}
 %\end{solution}
-
+\begin{solution}
+    \begin{description}
+        \item[(a)] \import{./q3}{q3a.tex}
+        \item[(b)] \import{./q3}{q3b.tex}
+    \end{description}
+\end{solution}
 
 
 \question[15]
@@ -125,6 +139,12 @@ In this question, we explain why the definition of space complexity counts the c
 	\part[10] Show that there exists a non-determinisitic Turing machine that writes only on cell to the right of left end marker symbol of its worktape and accepts $\overline{L}$. The machine may scan any number of worktape cells without writing on them.
 \end{parts}
 
+\begin{solution}
+    \begin{description}
+        \item[(a)] \import{./q4}{q4a.tex}
+        \item[(b)] \import{./q4}{q4b.tex}
+    \end{description}
+\end{solution}
 %\begin{solution}
 %	Write your answer here.
 %	\begin{description}
