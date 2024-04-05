@@ -1,0 +1,146 @@
+The policing language is $L_P = \set{
+    (M, x, t) \mid h(M, x) \leq t \text{ if $M$ halts on $x$}
+}$
+Let the machine deciding $L_P$ be $M_P$
+
+We will show that $\overline{\HP} \leq_m L_P$
+
+Reduction machine on input $(M, x)$ an instance of $\overline{\HP}$ outputs $(N, \epsilon, 0)$ where $N$ is a 2 tape turing machine, where tape 1 is the input tape and tape 2 is the work tape\\
+Description of $N$ is as follows\\
+``
+On input $y$
+\begin{enumerate}
+    \item Run $M$ on $x$ using the work tape alone and for each step of $M$ on $x$, move the input tape head towards the right by 1 cell
+    \item If $M$ halts on $x$, move the input tape head towards left by 1 cell and halt
+\end{enumerate}
+
+``
+
+$(M, x) \notin \overline{\HP}$\\
+\imp
+$M$ halts on $x$\\
+\imp
+$N$ on any input (in particular $\epsilon$), turns the head once
+\imp
+$h(N, \epsilon) = 1$
+\imp
+$M_P$ rejects $(N, \epsilon, 0)$
+\imp
+$(N, \epsilon, 0) \notin L_P$
+
+$(M, x) \in \overline{HP}$\\
+\imp
+$M$ loops on $x$\\
+\imp
+Input tape head of $N$ always moves right, never making a head turn\\
+\imp
+$h(N, x) = 0$\\
+\imp
+$(N, \epsilon, 0) \in L_P$
+
+Thus $\overline{\HP} \leq_m L_P$ and since we know $\overline{\HP}$ is undecidable, there does not exist a policing language for $h$ defined in the above manner.
+
+\textbf{The below is another attempt at showing that $h(M, x)$ is not decidable}\\
+Suppose $h$ is decidable by a Total turing machine $X$
+
+Consider the following language described via a 2-tape (first is the input tape and the second is the work tape) turing machine $M_D$\\
+$M_D$ = \\
+``
+On input $x$
+\begin{enumerate}
+    \item Copy the input to the work tape and move input tape back to left end marker
+    \item Compute $k \gets h(M_x, x)$ where $M_x$ is the turing machine corresponding to the string $x$ (Note that computation is done on the work tape nothing is being done using the input tape now)
+    \item If $k$ is a finite number \\
+    Move the input tape back and forth for infinite number of times (i.e make the machine loop by moving the input tape head back and forth)
+\end{enumerate}
+
+``
+
+Let $z$ be the string representation of the machine $M_D$
+
+Now what will be $h(M_z, z)$?\\
+
+$h(M_z, z) = k$ for some finite $k$\\
+\imp
+In step 2 of the turing machine $N$, we will get $h(M_z, z)$ as $k$ and in step 3, $N$ will
+move the input tape back and forth infinite times\\
+\imp
+$N$ on input $z$ loops\\
+\imp $h(N, z) = \bot$\\
+\imp $h(M_z, z) = \bot$ since $N$ and $M_z$ are the same
+
+$h(M_z, z) = \bot$\\
+\imp $M_z$ on $z$ loops\\
+\imp Step 3 would never halt\\
+\imp Only place where input head turned was in step 1 for copying the input to the worktape\\
+\imp number of turns, input tape head of $N$ made on $z$ is 1\\
+\imp $h(N, z) = 1$\\
+\imp $h(M_z, z) = k$ where $k = 1$ (since $M_z$ and $N$ are the same)\\
+
+Hence we get\\
+$h(M_z, z) = k$ for some finite $k \Leftrightarrow h(M_z, z) = \bot$ 
+which is a contradiction\\
+Thus $h(M, x)$ is not computable
+% Thus $h(M, x)$ defined in the above manner is not a resource, because there exists no decidable policing machine
+
+
+
+
+% Blum's First Axiom is satisfied since $h(M, x)$ is defined only when $M$ halts on $x$\\
+% The policing language is $L_p\{
+%     (M, x, t) \mid h(M, x) \leq t
+% \}$\\
+% We will reduce it to $\FIN$\\
+% And prove that if $L_p$ is decidable, then $\FIN$ is semi-decidable
+
+% Let the total turing machine accepting $L_p$ be $M_p$\\
+% We know that $\FIN$ is not semi decidable
+
+% Let reduction machine $\sigma_i$ be defined as follows
+
+% $\sigma_i$ = ``\\
+% On input $M$ an instance of $\FIN$, output $(M_i', x, i)$ an instance of $L_p$ where
+% description of $M_i'$ is as follows\\
+% $M_i'$ = ``\\
+% On input $y$,
+%     \begin{enumerate}
+%         \item Run $M$ on $x$ for $i$ steps
+%         \item If $M$ halts on $x$ on $i$ steps, accept and halt
+%     \end{enumerate}
+% ``\\
+% ``\\
+
+
+% Let us define a infinite tape turing machine $N$, as follows \\
+% $N$ = ``\\
+% On input $M$, an instance of $\FIN$
+% \begin{enumerate}
+%     \item Label each tape as $i, i \in \N$, tape $i$ does the following
+%     \begin{enumerate}
+%         \item Find $(M_i', x, i)$ and runs $M_p$ on $(M_i', x, i)$
+%     \end{enumerate}
+%     \item Run all tapes $i, i \in \N$ with time sharing
+%     \item If any one accepts, accept
+% \end{enumerate}
+% ``\\
+% This is a partial turing machine\\
+% To prove: $L(N) = \FIN$
+
+% $M \in \FIN$\\
+% \imp\\
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

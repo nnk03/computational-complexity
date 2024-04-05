@@ -1,0 +1,70 @@
+We have to prove that $\forall L \in \DTIME(t(n)), \exists $ an oblivious Turing machine with two tapes that decides $L$ in $O(t(n)^2)$ time\\
+Let $M_L$ be a $k$ tape Turing machine which decides $L$ in $t(n)$ time
+
+Let $N$ be the oblivious Turing machine with 2 tapes.\\
+Tape 1 : Simulates all the $k$-tapes of $M_L$ using $k$ tracks and appropriate symbols, for all $a$ belonging to the symbols of $M$, we have $a$ and $\hat{a}$ as symbols for our oblivious turing machine where $\hat{a}$ represents the head in the corresponding tape\\
+Tape 2 : Maintains a counter (which will be described below)
+
+Description of $N$ is as follows : 
+``
+On input $x$,
+    \begin{enumerate}
+        \item Compute $k \gets t(n)$ and store it in tape 2 (takes $t(n)$ time since it's time constructible)
+        \item For each step of $M$ say, $i$th step,
+        \begin{enumerate}
+            \item Move the head from left end marker to the $i$th cell, the actions at each step is as follows\\
+            Suppose the head of $N$ is at $j$th position ($j \leq i$)\\
+            For the $n$th tape
+            \begin{enumerate}
+                \item Case 1 : $\delta_{M_L}(p, a, n) = (q, b, R)$ ($n$ represents the $n$th tape in $M_L$) : Change the symbol in the $n$th track and mark the right symbol with a hat
+                \item Case 2 : $\delta_{M_L}(p, a, n) = (q, b, L)$. Continue
+            \end{enumerate}
+            \item Move the head from $i$th cell to the left end marker, the actions at each step is as follows\\
+            Suppose the head of $N$ is at $j$th position $(j \leq i)$\\
+            For the $n$th tape
+            \begin{enumerate}
+                \item Case 1 : $\delta_{M_L}(p, a, n) = (q, b, R)$ : Continue
+                \item Case 2 : $\delta_{M_L}(p, a, n) = (q, b, L)$ : Change the symbol in the $n$th track and mark the left symbol with a hat
+            \end{enumerate}
+        \end{enumerate}
+        (N needs to remember the positions of the hatted symbols in its finite control)
+    \end{enumerate}
+    
+``
+
+We can see that this machine is just simulating $M_L$, Hence $L(N) = L(M_L) = L$\\
+For $i$ step of $M_L$, $N$ takes $i$ steps to go to $i$th cell and $i$ steps to come back (in total $2i$ steps)\\
+The reason is that $M_L$ can only modify atmost $i$ cells in $i$ steps, So it's enough to just go till $i$th cell and come back
+
+Therefore the total number of steps taken by $N$ to decide $L$ is 
+\begin{align}
+    \sum_{i = 0}^{t(n)} 2i &= t(n) * (t(n) + 1) \\
+    &= O(t(n)^2)
+\end{align}
+
+\begin{claim}
+    $N$ is oblivious
+\end{claim}
+\begin{proof}
+    For each step $i$ of $M_L$, $N$ moves till $i$th cell and comes back\\
+    \imp
+    Corresponding to $i$th configuration of $M_L$, there are $2i$ configurations for $N$, Let us write the configurations of $N$ in serial order starting from $i = 0$, i.e for $i$th step of $M_L$ we write down configurations of $N$ in serial order\\
+    If we index this sequence, what we get is a bijection from natural numbers to the configurations of $N$ and this bijection does not depend on $x$. \\
+    Hence $N$ is oblivious
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

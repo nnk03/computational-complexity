@@ -1,0 +1,75 @@
+Let the language $L$ be 
+
+$L = \set{
+    0^k 1^k \mid k \geq 0
+}$
+
+Input length is $n = 2k$
+
+First, we can check if the input is of the form $0^* 1^*$, by using a DFA, which can be encoded in the finite control of the Turing machine
+
+We can check if the number of 0's in first half of the string and number of 1's in the second part of the string using the turing machine and a DFA
+
+The below is the description of the turing machine $M$ which accepts $L$ in $O(n \log n)$
+
+$M$ =\\
+``
+On input $x$,
+\begin{enumerate}
+    \item Check if it is of the form $0^*1^*$ using the DFA encoded in the finite control. If not, \textbf{reject}.
+    \item Move the input tape from left end marker towards the right as long as it only sees zero. While moving the head, Use a parity DFA to find if the number of zeros is even or odd and save it in register.
+    \item Once we reach 1, continue moving towards right, but this time restart the parity DFA and find the parity of number of 1's. And if this is not same as parity of number of zeros which was saved before, \textbf{reject}\label{q3a:parity_check_done}
+    \item Do the following steps as long as possible
+    \begin{enumerate}
+        \item Move the tape head from left to right and strike every alternate zeros and once we reach one, continue moving towards right, but strike off every alternating zero
+        \item Move the tape head from right to left and strike every alternate 1's and once we reach a zero, continue moving towards left 
+        \item If in some run (either left to right or right to left), if we have not deleted 0, and we deleted some 1's, \textbf{reject} (since it means more number of 0's than 1's). similarly if we have not deleted 1, and we deleted some 0's, \textbf{reject} (since it means more number of 1's than 0's
+        \item If the tape becomes empty, \textbf{accept}
+    \end{enumerate}
+\end{enumerate}
+
+``
+
+\begin{claim}
+    $L(N) = L$
+\end{claim}
+\begin{proof}
+    $N$ rejects every string of the form other than the regular expression $0^* 1^*$\\
+    $N$ rejects every string where the number of 1's $\mod 2$ is not equal to number of 0's $\mod 2$\\
+    After step \ref{q3a:parity_check_done}, we will be sure that either number of 0's and 1's are both odd or both even and it is of the form $0^*1^*$.
+    Now, we are moving the input head left to right and right to left repeatedly and deleting all alternate symbols of the same kind (in every run, either left to right or right to left).\\
+    Let $m_i$ denote the number of symbols in the tape (which are not deleted) in the $i$th iteration (one iteration is one run of the input tape head either from left to right or right to left, \imp All left to right runs are odd iterations and right to left runs are even iterations in this case)\\
+    $m_0 = n$\\
+    At every iteration, half of the symbols (0 or 1) of the then content of the tape will get deleted \\
+    $m_1 = \frac{n}{2}$\\
+    $m_2 = \frac{n}{2^2}$\\
+    \vdots\\
+    After the final iteration, there are 3 cases
+    \begin{enumerate}
+        \item Tape contains only 1's \imp input had more 1's than 0's \imp we reject
+        \item Tape contains only 0's \imp input had more 0's than 1's \imp we reject
+        \item No content in the tape \imp input had equal number of 1's and 0's \imp we accept
+    \end{enumerate}
+    Thus $L(N) = L$
+\end{proof}
+
+\begin{claim}
+    Running time of $N$ is $O(n \log n)$
+\end{claim}
+\begin{proof}
+    Not that every run of the tape head, time taken is $n$ steps and the overall running time would be number of runs * $n$ steps\\
+    Number of runs would be atmost $\log n$, since in each run $m_i$ reduces by half till the tape becomes empty or the $N$ rejects\\
+    Therefore the overall running time is $O(n \log n)$
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+

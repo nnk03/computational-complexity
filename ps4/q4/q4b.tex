@@ -1,0 +1,46 @@
+If input is not of the form $\Sigma^* \# \Sigma^*$, accept, which can be done using a DFA, which can be encoded in the finite control of the Turing machine
+
+The description of turing machine $N$ (non deterministic) is as follows 
+
+$N$ = 
+``
+On input $z$,
+\begin{enumerate}
+    \item Scan the entire input from left to right(in the read only tape), and then come back to left end marker while simulating the DFA which accepts $\Sigma^* \# \Sigma^*$. If DFA rejects, accept $z$
+    \item Now input is of the form $z = x\#y$
+    \item Move input tape head and working tape head till simultaneously till the input tape head reaches the end of input
+    \item Now move the input tape head back to \#
+    \item Move input tape head and working tape head towards left till input reaches left end marker
+    \item If $|x| = |y|$, then working tape head would have reached \#. Hence if working tape head is at a cell having some other symbol, Accept (since $|x| != |y|$ \imp $x\#y \in \overline{L}$
+    \item Now we have verified $z = x\#y$ and $|x| = |y|$, if $|x| != |y|$, there exists a position $i$ wherein $x_i != y_i$.
+    \item Move the input tape head and working tape head simultaneously till input tape head reaches \#. After that move back the input tape head to left end marker.
+    \item Now input tape head is at left end marker and working tape head is at \#. 
+    \item Move the input tape head and working tape head towards right simultaneously.
+    \item Non deterministically choose when to stop
+    \item if the symbol in cell at the input tape head is not the same as symbol in the cell at the work tape head, Accept (since we have found a position at which both strings $x$ and $y$ differ)
+\end{enumerate}
+
+``
+
+The claim $N$ accepts $\overline{L}$ is immediate (every step in the description of $N$ has the corresponding reason)\\
+Note that we are not in anyways using a counter to track where we are. We are only using the heads of 2 tapes in a certain way so as to do the same job as counter. And thus we are not using any space for writing
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,23 @@
+We need to prove that any turing machine which accepts a non regular language will need at least $\Omega(n \log n)$ time
+
+\begin{claim}
+    If time is bounded by a finite number $k$, then the turing machine can only accept regular languages
+\end{claim}
+\begin{proof}
+    If time is bounded by a finite number $k$, the number of possible runs of the turing machine is $N^k$ where $N$ is the total number of possible configurations \\
+    $N = |Q| \times s(n) \times d^{s(n)}$, where $s(n)$ is the space used, but note that any turing machine running in $k$ time can only use atmost $k$ cells.
+    hence $s(n)$ is bounded by $k$. Therefore the total number of runs is finite which can be stored in the finite control of the turing machine itself and we don't require a work tape
+    \\
+    Hence, the Turing machine can be simulated by a 2 way DFA, and thus it is proven that any turing machine whose time is bounded by a fixed finite number for all inputs, accept only regular language
+\end{proof}
+
+Therefore, without loss of generality, suppose a turing machine accepts a non regular language, 
+For all $k$, there exists an input $x$ which uses atleast $k$ time. Let $x_k^*$ denote the minimum length string, which uses atleast $k$ time. Let $C$ be the crossing sequences of configurations. The number of possible total number of configurations can be bounded as a function of $|Q|, d, t(n)$, where because in $t(n)$ time, atmost $d * t(n)$ cells can be used ($d$-tape turing machine)
+
+
+
+
+
+
+
+

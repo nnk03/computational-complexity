@@ -1,0 +1,23 @@
+If input is not of the form $\Sigma^* \# \Sigma^*$, reject, which can be done using a DFA, which can be encoded in the finite control of the Turing machine
+
+For inputs of the form, $x \# y$ check if $|x| = |y|$ using binary counters. Maximum value of the binary counter is $n$, which can be represented in $\log(n)$ space
+
+2 tape turing machine accepting $L$ is as follows\\
+$M$ = \\
+``
+On input $z$,
+\begin{enumerate}
+    \item Scan the entire input from left to right(in the read only tape), and then come back to left end marker while simulating the DFA which accepts $\Sigma^* \# \Sigma^*$. If DFA rejects, reject $z$
+    \item Maintain a counter, called $i$ initialized to 0.
+    \item Increment the $i$ and go to the $i$th cell and store it in the register. Go to the $i$th cell after the \# and check if it is equal to the stored value. If not reject.
+    \item Go back to left end marker and increment $i$ and repeat this process.
+    \item At the end when we encounter \# in $i$th cell for some $i$, the corresponding cell i.e $i$ cells after the \# must be blank symbol, else reject
+    \item Else accept
+\end{enumerate}
+
+``
+
+We are only maintaining a counter which uses $\log{n}$ space. Hence $L \in \DSPACE(\log n)$
+
+
+

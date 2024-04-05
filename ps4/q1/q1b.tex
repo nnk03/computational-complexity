@@ -1,0 +1,51 @@
+Policing language is $L_p = \{ 
+    (M, x, d) \mid c(M, x) \leq d, M \text{ halts on $x$}
+\}$\\
+Suppose this is decidable via a turing machine $M_p$
+
+We will show a reduction from $\HPbar$ to $L_p$
+
+Reduction machine on input $(M, x)$ an instance of $\HPbar$ outputs $(M', x, 0)$
+We will consider this count with respect to the terminal state $q_t$ of $M'$\\
+The description of $M'$ is as follows\\
+``\\
+On input $y$,
+\begin{enumerate}
+    \item Run $M$ on $x$
+    \item If $M$ halts on $x$, enter accept state and halt
+\end{enumerate}
+``
+
+To prove $(M, x) \in \HPbar \Leftrightarrow M' \in L_p$
+
+$(M, x) \in \HPbar$\\
+\imp
+$M$ does not halts on $x$\\
+\imp
+$M$ enters accept state 0 times\\
+\imp
+$M_p$ accepts $(M', x, 0)$
+
+$(M, x) \notin \HPbar$\\
+\imp
+$M$ halts on $x$\\
+\imp
+$M$ enters accept state 1 time\\
+\imp
+$M_p$ rejects $(M', x, 0)$
+
+Thus if $L_p$ is decidable, then so is $\HPbar$ which we know is not the case\\
+Hence Policing machine does not exist for $L_p$\\
+\imp\
+\textbf{$c(M, x)$ is not a resource}
+
+
+
+
+
+
+
+
+
+
+
