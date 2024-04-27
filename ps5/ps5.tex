@@ -1,0 +1,116 @@
+\documentclass[12pt, a4paper,answers]{exam}
+\usepackage{graphicx,fullpage,complexity}
+\usepackage{amsmath,amsthm,amssymb}
+\usepackage[ruled,vlined]{algorithm2e}
+\usepackage{xcolor}
+\definecolor{iitpkdcolor}{cmyk}{0,0.42,1,0} %iitpkd logo color
+\usepackage[normalem]{ulem}
+\renewcommand\ULthickness{2.0pt}   %%---> For changing thickness of underline
+\setlength\ULdepth{1.3ex}%\maxdimen ---> For changing depth of underline
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\HP}{\mathsf{HP}}
+\newcommand{\ALL}{\mathsf{ALL}}
+\newcommand{\TOTAL}{\mathsf{TOTAL}}
+\renewcommand{\D}{\mathcal{D}}
+\newcommand{\SD}{\mathcal{SD}}
+%\newcommand{\BP}{mathsf{BP}}
+%\newcommand{\}{def}
+\begin{document}
+	%\thispagestyle{empty}
+	\noindent
+	\begin{minipage}[l]{0.1\textwidth}
+		\noindent
+		\includegraphics[width=2.4\textwidth]{iitpkd}
+	\end{minipage}
+	\hfill
+	\begin{minipage}[c]{0.8\textwidth}
+		\begin{center}
+			{\large \textsc{\textcolor{iitpkdcolor}{Indian Institute of Technology Palakkad}} \par
+				\small	Department of Computer Science and Engineering	\par
+				\large	CS5616 Computational Complexity \par 
+				\small January -- May 2024}
+		\end{center}
+	\end{minipage}
+	\par
+\vspace{2mm}
+\hrule
+\vspace{2mm}
+\begin{minipage}{0.9\textwidth} 
+	\textsf{Problem Set} -- 5  \hfill  \textsf{Total Points} -- 50
+	
+	{\small \textsf{Name}: Your name    \hfill \small \textsf{Given on} 15 Apr}
+	
+	{\small \textsf{Roll no}: 11223344  \hfill \small \textsf{Due on} 05 May }
+\end{minipage}
+	\vspace{0.2in}
+\noindent
+
+\textbf{Instructions}
+\begin{itemize}   \setlength\itemsep{0.1mm}
+	\item {\sf  Use of resources other than class notes and references is forbidden.}
+	\item {\sf Collaboration is not allowed. Credit will be given for attempts and partial answers.}
+\end{itemize}
+
+
+\begin{questions}
+
+
+\question[10] (\textbf{$\NP$ Completeness} of $\textsc{Nae3Sat}$)
+$\textsc{Nae3Sat}$ is the set of all satisfiable $3$CNF formulas $\phi$ that have a satisfying truth assignment where there is no clause in $\phi$ with all its literals being true. Show that $\textsc{Nae3Sat}$ is $\NP$-complete. [\textit{Hint: $3\SAT$}!]
+%\begin{solution}
+%	Write your answer here.
+%\end{solution}
+
+
+\question[15] (\textbf{Algorithm for $\SAT$ from its existence})
+Suppose $\SAT \in \DTIME(n^c)$ wherein, the constant $c$ is known, while a description of the polynomial time algorithm is not given (that is, we just know it exists). For $i \in \mathbb{N}$, let $\mathsf{bin}(i)$ be its binary representation and $M_{\mathsf{bin}(i)}$ be a machine whose description is $\mathsf{bin}(i)$. Consider the algorithm \ref{algo} which finds a satisfying assignment using this information.
+
+\begin{algorithm}[htp!]
+	\KwResult{Output a satisfying assignment for $\phi$}
+	\KwIn{A formula $\phi$ of size $n$}
+	\For{$i$ from $1$ to $n$ }{
+		\If {$\mathsf{bin}(i)$ is a valid description of a Turing machine }{
+			Run $M_{\mathsf{bin}(i)}$ on $\phi$ for time $O(n^{c+1} \log n)$ \;
+			\If{the machine output a satisfying assignment for $\phi$}{
+				Accept and halt \;
+			}
+	}}
+	Reject\;
+	\label{algo}
+	\caption{Algorithm for satisfiability}
+\end{algorithm}
+
+Observe that this algorithm runs in polynomial time. Clearly reason out why this algorithm will correctly find a satisfying assignment if and only if $\phi$ is satisfiable. Is this algorithm practical ? [\textit{Hint: Use the decision-to-search reduction for $\mathsf{SAT}$} !]
+
+% Uncomment the following to answer
+%\begin{solution}
+%	Write your answer here.
+%\end{solution}
+
+
+\question[5] (\textbf{Deterministic Oracles}) 
+
+Is it true $\NP \subseteq \P^{\NP}$ always or is not known ?  What about $\P^{\NP} \subseteq \NP$ ? Give proper justification for your answers.
+%\begin{solution}
+%	Write your answer here.
+
+%\end{solution}
+
+\question[5] (\textbf{Immerman-Szelepcs\'enyi Theorem in general form}) 
+
+For any $s(n) \ge \log n$ that is space constructible, show that $\NSPACE(s(n)) = \co\NSPACE(s(n))$. [\textit{Hint: For $L \in \NSPACE(s(n))$, start with $L_{pad} = \{x \# 1^{2^{s(n)}-n-1} \mid x \in L\text{ where } n=|x|\}$  and use $\NL=\coNL$} !] 
+
+%\begin{solution}
+%	Write your answer here.
+%\end{solution}
+
+\question[15] Show that $\BPP^\BPP = \BPP$. That is, the set of all languages that can be accepted by a two-sided error randomized polynomial time  algorithm is the same as those that can be accepted with an oracle access to a $\BPP$ language. Is $\RP^\RP = \RP$ ? Argue.
+
+%\begin{solution}
+%	Write your answer here.
+%\end{solution}
+
+
+\end{questions}
+
+\end{document}
