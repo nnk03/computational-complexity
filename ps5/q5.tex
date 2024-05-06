@@ -1,0 +1,85 @@
+\begin{claim}\label{bpp_in_oracle_bpp}
+    $\BPP \subseteq \BPP^\BPP$
+\end{claim}
+\begin{proof}
+    suppose there exists a $\BPP$ machine $M$ which accepts a language $L \in \BPP$, then the same machine is also a $\BPP^\BPP$.
+
+The following is a turing machine which uses $L$ as an $\BPP$ oracle\\
+$M'$ =  ''\\
+    On input $x$
+    \begin{enumerate}
+        \item Query if $x \in L$ 
+        \item Accept if and only if oracle accepts
+    \end{enumerate}
+''
+
+$x \in L$\\
+\imp
+$Pr[\text{oracle says yes}] \ge 1 - \epsilon$\\
+\imp
+$Pr[\text{$M'$ says yes}] \ge 1 - \epsilon$\\
+
+$x \notin L$\\
+\imp
+$Pr[\text{oracle says yes}] \le \epsilon$\\
+\imp
+$Pr[\text{$M'$ says yes}] \le \epsilon$\\
+
+Thus $L \in \BPP^\BPP$
+\end{proof}
+
+
+\begin{claim}\label{oracle_bpp_in_bpp}
+    $\BPP^\BPP \subseteq \BPP$
+\end{claim}
+\begin{proof}
+    Let $L \in \BPP^\BPP$\\
+    \imp there is a turing machine $M$ using $L' \in \BPP$ as an oracle which accepts $L$ with error probability $\epsilon$ i.e\\
+    $x \in L$ \imp $Pr[\text{$M$ says yes}] \ge 1 - \epsilon$\\
+    $x \notin L$ \imp $Pr[\text{$M$ says yes}] \le  \epsilon$
+
+    Let $M'$ be the turing machine which accepts $L'$ with error probability $\epsilon'$
+
+    We need to come up with a turing machine $N$ which accepts $L$ with a certain error probability $\epsilon''$
+
+    The following is the description of $N$\\
+    $N$ = ''\\
+    On input $x$,
+    \begin{enumerate}
+        \item Run $M$ on $x$ without the oracle
+        \item Whenever a query of the form $y \in L'$ is asked, Run $M'$ on $y$ and return yes if and only if $M'$ accepts $y$
+        \item Accept if and only if $M$ accepts $x$
+    \end{enumerate}
+
+    ''
+
+    \begin{proof}
+        [Correctness]
+        The number of times oracle can be queried is only polynomial in size of $x$. Hence $N$ runs in polynomial time\\
+        The error of $M'$ is bounded, Hence error of $N$ is also bounded.
+        i.e\\
+        $x \in L$ \\
+        \imp
+        \begin{align}
+              Pr[\text{N accepts x}] &\ge Pr[\text{all queries returned correct answer}]\\
+              &\ge 1 - \epsilon'^{n^c} \text{for some fixed constant c}
+        \end{align}
+
+         $x \notin L$ \\
+        \imp
+        \begin{align}
+              Pr[\text{N accepts x}] &\le Pr[\text{some queries returned wrong answer}]\\
+              &\le \epsilon'^{n^c} \text{for same  constant c}
+        \end{align}
+
+      Thus $N$ is a turing machine without oracle accepting $L$ with error probability of $\epsilon'' = \epsilon'^{n^c}$ for some fixed constant $c$
+    \end{proof}
+    
+    Thus $\BPP^\BPP \subseteq \BPP$
+\end{proof}
+
+
+
+
+
+

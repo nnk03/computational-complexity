@@ -1,0 +1,127 @@
+% \begin{claim}
+%     $\naetsat$ is in $\NP$
+% \end{claim}
+% \begin{proof}
+%     The below is an efficient yes-verifier for $\naetsat$, given an assignment of variables.
+%     \begin{enumerate}
+%         \item Check if there is a clause with all it's literals being true. If such a clause exists \textbf{reject}.
+%         \item Check if the assignment of variables satisfy the formula which can be done in polynomial time
+%     \end{enumerate}
+%     Thus, $\naetsat \in \NP$ 
+% \end{proof}
+
+It suffices to prove $3\SAT \leq_m^p \naetsat$.
+\begin{claim}
+    $3\SAT \polyreduce \naefsat$ where $\naefsat$ is the set of all satisfiable 4CNF formulas $\phi$ that have a satisfying truth assignment where there is no clause in $\phi$ with all its literals being true
+\end{claim}
+\begin{proof}
+    The reduction is as follows, with input being $\phi$ an instance of 3CNF and output being $\phi'$ an instance of $\naefsat$
+    \begin{enumerate}
+        \item For each clause $C_i = l_{i, 1} \lor l_{i, 2} \lor l_{i, 3}$ in $\phi$, add 2 clauses $\Tilde{C_i} = l_{i, 1} \lor l_{i, 2} \lor l_{i, 3} \lor \Tilde{l_i}$ and $\Tilde{C_i}' = l_{i, 1} \lor l_{i, 2} \lor l_{i, 3} \lor \neg \Tilde{l_i}$ to $\phi'$ where $\Tilde{l_i}$ is a dummy variable
+    \end{enumerate}
+
+    It is clear that the reduction is poly-time reduction
+    \begin{proof}
+        [Correctness]
+        $\phi \in 3SAT$\\
+        \imp
+        $\exists$ a satisfying assignment for $\phi$, call it $S$\\
+        \imp
+        $S$  with the variables $\Tilde{l_i}$ set to \textbf{False} for all $i$ is a satisfying assignment for $\phi'$\\
+        \imp
+        $\phi' \in \naefsat$\\\\
+        $\phi \not \in 3SAT$\\
+        \imp
+        For any truth assignment $S$ of $\phi$, $\exists i$ such that $C_i$ evaluates to \textbf{false}\\
+        \imp
+        For any truth assignment $S$ of $\phi$ along with truth assignments for the dummy  variables, we need to exhibit an $i$ such that either $\Tilde{C_i}$ or $\Tilde{C_i}'$ evaluates to \textbf{false}.\\
+        Any truth assignment for dummy variables must set $\Tilde{l_i}$ to either \textbf{true} or \textbf{false}\\
+        Consider any truth assignment $S$ of $\phi$, We know that $\exists i$ such that $C_i$ evaluates to \textbf{false}. For such an $i$, consider the following cases
+        \begin{enumerate}
+            \item If $\Tilde{l_i}$ is set to \textbf{true}, $\Tilde{C_i}$ evaluates to \textbf{True}, but then $\Tilde{C_i}'$ evaluates to \textbf{False}
+            \item Similarly, If $\Tilde{l_i}$ is set to \textbf{false}, $\Tilde{C_i}'$ evaluates to \textbf{True}, but then $\Tilde{C_i}$ evaluates to \textbf{False}
+        \end{enumerate}
+        \imp
+        We have shown that for all truth assignments of $\phi'$, we have shown an $i$ such that $\Tilde{C_i}$ or $\Tilde{C_i}'$ evaluates to \textbf{false}\\
+        \imp
+        $\phi'$ is unsatisfiable
+        \imp
+        $\phi' \not \in \naefsat$
+    \end{proof} 
+            Thus $\phi \in 3SAT \Leftrightarrow \phi' \in \naefsat$
+\end{proof}
+
+\begin{claim}
+    $\naefsat \polyreduce \naetsat$
+\end{claim}
+Call the below condition as invariant
+\begin{invariant} \label{q1:invariant}
+    Clause does not have all its literals set to true
+\end{invariant}
+\begin{proof}
+    The reduction is as follows
+    \begin{enumerate}
+        \item Let the $\naefsat$ instance be denoted by $\phi = (C_1, \dots, C_m)$,
+        where $C_i$ are clauses and $C_i = l_{i, 1} \vee l_{i, 2} \vee l_{i, 3} \vee l_{i, 4}$
+        \item Output is $\psi = (C_1', C_1'', C_2', C_2'', \dots, C_m', C_m'')$ where 
+        $C_i' = l_{i, 1} \vee l_{i, 2} \vee x_i$ and $C_i'' = l_{i, 3} \vee l_{i, 4} \vee \neg x_i$ where $x_i$ is a dummy variable. This is an instance of $\naetsat$
+    \end{enumerate}
+    $\phi \in \naefsat$\\
+    \imp there exists an assignment such that, for all $i$, $C_i$ is true, and moreover all $l_{i, 1}, l_{i, 2}, l_{i, 3}, l_{i, 4}$ cannot be true since $C_i$ satisfies invariant\ref{q1:invariant}\\
+    \imp The following are the subcases
+    \begin{enumerate}
+        \item $l_{i, 1} = 0$ \imp atleast one of $l_{i, 2}, l_{i, 3}, l_{i, 4}$ must be true. 
+        \begin{enumerate}
+            \item If only $l_{i, 2} =  1$, then $C_i'$ satisfies invariant \ref{q1:invariant}, hence set $x_i = 1$ to make $C_i''$ satisfied and $C_i''$ satisfies invariant \ref{q1:invariant}
+            \item If exactly one of $l_{i, 3}$ or $l_{i, 4}$ is true, then automatically $C_i'$ and $C_i''$ both evaluate to true and satisfies invariant \ref{q1:invariant} for any value of $x_i$
+            \item If all 3 are true, then $C_i'$ satisfies invariant \ref{q1:invariant} and we can set $x_i = 0$ to make $C_i''$ true and $C_i''$ will satisfy the invariant \ref{q1:invariant}
+            \item If only $l_{i, 2} = 1$ and $l_{i, 3} = 1$, then automatically, both $C_i'$ and $C_i''$ evaluate to true and they satisfy invariant \ref{q1:invariant}
+            \item If only $l_{i, 2} = 1$ and $l_{i, 4} = 1$, then automatically, both $C_i'$ and $C_i''$ evaluate to true and they satisfy invariant \ref{q1:invariant}
+            \item If only $l_{i, 3} = 1$ and $l_{i, 4} = 1$, then clause $C_i'$ evaluates to true and it satisfies invariant \ref{q1:invariant}, hence we can set $x_i = 1$ to make $C_i''$ satisfy the invariant \ref{q1:invariant}
+        \end{enumerate}
+    \end{enumerate}
+    \imp $\psi \in \naetsat$
+\\\\
+    $\phi \notin \naefsat$\\
+    \imp
+    For all assignments, there exist an $i$, such that either $C_i$ is false or all literals in $C_i$ are true (in other words $C_i$ does not satisfy invariant \ref{q1:invariant})\\
+    \imp For all assignments, consider the $i$ such that either one of the following holds
+    \begin{enumerate}
+        \item $C_i$ is false. Then $C_i'$ and $C_i''$ cannot be both true simultaneously since $C_i'$ contains $x_i$ and $C_i''$ contains $\neg x_i$ \imp either $C_i'$ or $C_i''$ is false and thus $\psi$ is unsatisfiable and hence $\psi \notin \naetsat$
+        \item $C_i$ does not satisfy invariant \ref{q1:invariant}. which implies all its literals are true, Then if $x_i = 1$, then $C_i'$ does not satisfy the invariant and if $x_i = 0$ then $C_i''$ does not satisfy the invariant \imp for any value of $x_i$, one of $C_i'$ or $C_i''$ doesn't satisfy the invariant \ref{q1:invariant} \imp
+        $\psi \notin \naetsat$
+    \end{enumerate}
+    \imp $\psi \notin \naetsat$.\\
+    Therefore $\phi \in \naefsat \Leftrightarrow \psi \in \naetsat$ and thus $\naefsat \polyreduce \naetsat$
+\end{proof}
+
+Hence, by transitivity of many-one polynomial time reductions,we can conclude that $3\SAT \leq_m^p \naetsat$ and since $3\SAT$ is $\NP$-complete, $\naetsat$ is also $\NP$-complete.
+
+% \begin{proof}
+%     For this, we can perform the same reduction which reduces a CNFSAT formula to an equivalent 3SAT formula
+%     \begin{proof}
+%         [Correctness]
+%         $\phi \in \naefsat$\\
+%         \imp
+%         There exists a satisfying assignment in which all literals are not true in any clause\\
+%         \imp
+%         The same satisfying assingment along with appropriate assignments for the dummy variables would be a satisfying assignment for 3SAT. This satisfying assignment is such that in all clauses, not all literals are true, because\\
+%         Take an arbitrary clause of $\phi$, say $C = l_1 \lor l_2 \lor l_3 \lor l_4$, we would have converted it to 2 clauses $C_1$ and $C_2$ in $\phi'$ (an instance of $\naetsat$) where\\
+%         $C_1 = l_1 \lor l_2 \lor x_c$ and $C_2 = l_3 \lor l_4 \lor \neg x_c$, where $x$ is a dummy variable, we know that atleast 2 of the literals $l_1, l_2, l_3, l_4$ are different because the original formula was in $\naefsat$, There are 6 cases
+%         \begin{enumerate}
+%             \item $l_1$ and $l_2$ are different\\ \imp literals of $C_1$ are different
+%             \item $l_1$ and $l_3$ are different\\ \imp $l_1$ and $l_2$ are same and $l_3$ and $l_4$ are same\\ \imp suppose $l_1$ and $l_2$ both are \textbf{false}, then we would set $x_c$ to \textbf{true}\\
+%             suppose $l_1$ and $l_2$ both are \textbf{true}, then we set the value of $x_c$ by checking the clause $C_2$ i.e \\
+%             suppose $l_3$ and $l_4$ both are false, then we would set $\neg x_c$ to \textbf{true} and \\
+%             suppose $l_3$ and $l_4$ both are true, then we set $\neg x_c$ to false, so that not all literals in this clause
+%         \end{enumerate}
+
+    
+
+
+        
+%     \end{proof}
+% \end{proof}
+
+
+

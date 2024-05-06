@@ -1,0 +1,85 @@
+\begin{claim}\label{q4:L_to_L_pad}
+    $L \in \NSPACE(s(n)) \Rightarrow L_{pad} \in \NL$
+\end{claim}
+\begin{proof}
+    Since $L \in \NSPACE(s(n))$, there is a turing machine $N$ accepting $L$ using $s(n)$ space\\
+    Below is a description of turing machine $N_p$ which accepts $L_{pad}$\\
+    $N_p$ = \\
+    ``\\
+    On input $y = x\#0^{2^{s(n)} - n - 1}$
+    \begin{enumerate}
+        \item Run $N$ on $x$ (note that we don't have to copy the input $x$, we can use the input tape as input tape for $N$ and simulate $N$ in work tape, which takes $s(n)$ space)
+        \item Accept if and only if $N$ accepts
+    \end{enumerate}
+    ``\\
+    Input is $y = x\#0^{2^{s(n)} - n - 1}$ and $|y| = 2^{s(n)}$ and the machine $N_p$ uses $s(n)$ space which is $\log (2^{s(n)}$. Hence $L(N_p) \in NL$\\
+    We need to prove $L(N_p) = L_{pad}$\\
+    $y = x\#0^{2^{s(n)} - n - 1}\in L_{pad}$\\
+    \dimp $x \in L$\\
+    \dimp $N$ accepts $x$\\
+    \dimp $N_p$ accepts $y$\\
+    \dimp $y \in L(N_p)$
+
+    Thus $L(N_p) = L_{pad}$ and hence $L_{pad} \in NL$
+\end{proof}
+
+\begin{claim}\label{q4:coNL_to_coNSPACE}
+    $L_{pad} \in co\NL$ \imp $L \in co\NSPACE(s(n))$
+\end{claim}
+\begin{proof}
+    instead of directly constructing $x_{pad}$ use a counter to denote how many zeroes, we have given the turing machine
+
+    $L_{pad} \in co\NL$\\
+    Let $N_c$ be the turing machine which accepts $\overline{L_{pad}}$. The below is a turing machine $N$ which accepts $L$\\
+    $N$ = \\
+    ``\\
+        On input $x$,
+        Reserve $s(n)$ space in work tape for maintaining a counter (possible using $s(n)$ space since it is space constructible) and initialize it with the binary representation of $2^{s(n) - n}$
+        \begin{enumerate}
+            \item Start simulating $N_c$, whenever it asks for input, Check the following cases
+            \begin{enumerate}\label{q4:peculiar_input}
+                \item If input head is still valid (i.e head points to $x_i$ for some $i$), use this as the symbol read by $N_c$ and make the head movement corresponding to the transition of $N_c$
+                \item If the input head is invalid and if the counter value is ${2^{s(n)} - n}$, then return \# as symbol read and if head moves right, decrement counter by one and don't change if head moves left
+                \item Else, return 0 as the symbol to $N_c$ and decrement counter by one if the corresponding head movement is towards right and increment counter by one if corresponding head movement is towards left
+                \item If counter value is 0, then return blank symbol as input symbol for $N_c$
+            \end{enumerate}
+            \item Accept if and only if $N_c$ accepts
+        \end{enumerate}
+    ``\\
+
+    Note that this machine uses only $O(s(n))$ space\\
+    \begin{proof}
+        [Correctness]
+        The non trivial part is the steps in \ref{q4:peculiar_input}. We know that input to $N_c$ should be of the form $x\#0^{2^{s(n)} - n - 1}$, i.e we know that after and if we can keep track of how many zeroes $N_c$ have read after \#, we can easily identify whether the machine $N_c$ would have read $0$ or $x_i$ for some $i$, This is the reason we are maintaining a counter and once input head goes past $x$, we will start using the counter to determine whether to return $0$ or \# or blank symbol. Thus $N_c$ will always get the correct input\\
+
+        $x \in L$\\
+        \imp
+        $x\#0^{2^{s(n)} - n - 1} \in L_{pad}$\\
+        \imp
+        $N_c$ rejects $x\#0^{2^{s(n)} - n - 1}$\\
+        \imp
+        $N$ rejects $x$\\
+        \imp
+        $x \notin L(N)$\\
+
+        $x \notin L$\\
+        \imp
+        $x\#0^{2^{s(n)} - n - 1} \notin L_{pad}$\\
+        \imp
+        $N_c$ accepts $x\#0^{2^{s(n)} - n - 1}$\\
+        \imp
+        $N$ accepts $x$\\
+        \imp
+        $x \in L(N)$\\
+        Thus $L(N) = \overline{L_{pad}}$  
+    \end{proof}
+    Hence $L(N) \in co\NSPACE(s(n))$
+\end{proof}
+
+We know that $\NL = co\NL$ and combining this with claims \ref{q4:L_to_L_pad} and \ref{q4:coNL_to_coNSPACE}, we get $\NSPACE(s(n)) = co\NSPACE(s(n))$ for any space constructible $s(n) \ge \log n$
+
+
+
+
+
+

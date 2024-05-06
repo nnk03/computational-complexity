@@ -1,0 +1,26 @@
+$\NP \subseteq \P^{\NP}$ is always true.
+
+Let $L \in \NP$, the following is a turing machine $M^{L}$ using $L$ as an oracle and accepting $L$ in polynomial time
+
+$M$ = ``\\
+On input $x$,
+\begin{enumerate}
+    \item Query the oracle if $x \in L$.
+    \item accept if and only if oracle says yes
+\end{enumerate}
+
+Correctness is trivial since the oracle always gives correct responses and the oracle is the same language which we want to accept and the machine runs in polynomial time
+
+Thus $L(M^L) = L$, thus $L \in \P^{\NP}$.
+
+
+It is not known if $\P^\NP \subseteq \NP$ is true or not.
+
+
+
+
+
+
+
+
+
